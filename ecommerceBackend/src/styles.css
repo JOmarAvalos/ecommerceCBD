@@ -4252,3 +4252,10 @@ Mane upload
 .icon-arrow-right:before {
     content: "\e649";
 }
+
+.content-wrap {
+    margin-left: 250px;
+    padding-top: 50px;
+    -webkit-transition: all .25s;
+    transition: all .25s;
+}

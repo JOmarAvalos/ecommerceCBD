@@ -1,4 +1,4 @@
-(function ($) {
+(function($) {
     "use strict";
 
     /* 
@@ -6,7 +6,7 @@
     Sidebar open close animated humberger icon
     ------------------------------------------------*/
 
-    $(".hamburger").on('click', function () {
+    $(".hamburger").on('click', function() {
         $(this).toggleClass("is-active");
     });
 
@@ -15,16 +15,16 @@
     -------------------
     List item active
     -------------------*/
-    $('.header li, .sidebar li').on('click', function () {
+    $('.header li, .sidebar li').on('click', function() {
         $(".header li.active, .sidebar li.active").removeClass("active");
         $(this).addClass('active');
     });
 
-    $(".header li").on("click", function (event) {
+    $(".header li").on("click", function(event) {
         event.stopPropagation();
     });
 
-    $(document).on("click", function () {
+    $(document).on("click", function() {
         $(".header li").removeClass("active");
 
     });
@@ -39,18 +39,18 @@
 
     var open = false;
 
-    var openSidebar = function () {
+    var openSidebar = function() {
         $('.chat-sidebar').addClass('is-active');
         $('.chat-sidebar-icon').addClass('is-active');
         open = true;
     }
-    var closeSidebar = function () {
+    var closeSidebar = function() {
         $('.chat-sidebar').removeClass('is-active');
         $('.chat-sidebar-icon').removeClass('is-active');
         open = false;
     }
 
-    $('.chat-sidebar-icon').on('click', function (event) {
+    $('.chat-sidebar-icon').on('click', function(event) {
         event.stopPropagation();
         var toggle = open ? closeSidebar : openSidebar;
         toggle();
@@ -63,7 +63,7 @@
     ---------------
     LobiPanel Function
     ---------------*/
-    $(function () {
+    $(function() {
         $('.lobipanel-basic').lobiPanel({
             sortable: true,
             reload: {
@@ -96,7 +96,7 @@
 
     /* TO DO LIST 
     --------------------*/
-    $(".tdl-new").on('keypress', function (e) {
+    $(".tdl-new").on('keypress', function(e) {
         var code = (e.keyCode ? e.keyCode : e.which);
         if (code == 13) {
             var v = $(this).val();
@@ -111,18 +111,18 @@
     });
 
 
-    $(".tdl-content a").on("click", function () {
+    $(".tdl-content a").on("click", function() {
         var _li = $(this).parent().parent("li");
-        _li.addClass("remove").stop().delay(100).slideUp("fast", function () {
+        _li.addClass("remove").stop().delay(100).slideUp("fast", function() {
             _li.remove();
         });
         return false;
     });
 
     // for dynamically created a tags
-    $(".tdl-content").on('click', "a", function () {
+    $(".tdl-content").on('click', "a", function() {
         var _li = $(this).parent().parent("li");
-        _li.addClass("remove").stop().delay(100).slideUp("fast", function () {
+        _li.addClass("remove").stop().delay(100).slideUp("fast", function() {
             _li.remove();
         });
         return false;
@@ -133,7 +133,7 @@
     /*  Chat Sidebar User custom Search
     ---------------------------------------*/
 
-    $('[data-search]').on('keyup', function () {
+    $('[data-search]').on('keyup', function() {
         var searchVal = $(this).val();
         var filterItems = $('[data-filter-item]');
 
@@ -146,12 +146,12 @@
     });
 
 
-        /*  Chackbox all
-        ---------------------------------------*/
+    /*  Chackbox all
+    ---------------------------------------*/
 
-        $("#checkAll").change(function () {
-            $("input:checkbox").prop('checked', $(this).prop("checked"));
-        });
+    $("#checkAll").change(function() {
+        $("input:checkbox").prop('checked', $(this).prop("checked"));
+    });
 
 
     /*  Data Table
@@ -162,11 +162,11 @@
 })(jQuery);
 
 
-(function ($) {
-    "use strict"; 
-    $(".card-collapse").click(function() {  
-        $(this).parents(".card").find( ".card-content" ).slideToggle(300);
-        return false; 
+(function($) {
+    "use strict";
+    $(".card-collapse").click(function() {
+        $(this).parents(".card").find(".card-content").slideToggle(300);
+        return false;
     });
 
 
@@ -174,31 +174,31 @@
 
 
     //Header logo 
-    $(".hamburger").on('click', function (){ 
-        var logoImg_sml =  $('#logoImg').data('logo_small');
-        var logoImg_big =  $('#logoImg').data('logo_big');
-        var logoOld =  $('#logoImg').attr('src');
-        if (logoOld == logoImg_big) { 
-            $('#logoImg').attr('src',logoImg_sml);
+    $(".hamburger").on('click', function() {
+        var logoImg_sml = $('#logoImg').data('logo_small');
+        var logoImg_big = $('#logoImg').data('logo_big');
+        var logoOld = $('#logoImg').attr('src');
+        if (logoOld == logoImg_big) {
+            $('#logoImg').attr('src', logoImg_sml);
         } else {
-            $('#logoImg').attr('src',logoImg_big);
-        } 
+            $('#logoImg').attr('src', logoImg_big);
+        }
         //$('.sidebar .nano-content > ul li.label').slideToggle(); 
     });
 
 
-    $(window).on("load",function(e){  
-        if($('body').hasClass('sidebar-hide')){
-            var logoImg_sml =  $('#logoImg').data('logo_small');
-            $('#logoImg').attr('src',logoImg_sml);
-        } 
+    $(window).on("load", function(e) {
+        if ($('body').hasClass('sidebar-hide')) {
+            var logoImg_sml = $('#logoImg').data('logo_small');
+            $('#logoImg').attr('src', logoImg_sml);
+        }
     });
 
 
 
     //sidebar 
     $('.sidebar').hover(function() {
-       $('body').addClass('open-sidebar')
+        $('body').addClass('open-sidebar')
     }, function() {
         $('body').removeClass('open-sidebar')
     });
@@ -209,19 +209,19 @@
         var windowHeight = $(window).height();
         var thisHeight = $(this).children('.drop-down').height();
         //alert('mine > ' + thisHeight + ' w > ' + windowHeight);
-        if (thisHeight>windowHeight) {
+        if (thisHeight > windowHeight) {
             $(this).children('.drop-down').css({
-                'overflow' : 'scroll',
+                'overflow': 'scroll',
                 'padding-bottom': '40px',
-                'height': '100vh' 
+                'height': '100vh'
             });
         } else {
             $(this).children('.drop-down').css({
-                'overflow' : 'inherit',
+                'overflow': 'inherit',
                 'padding-bottom': '0',
-                'height': 'auto' 
+                'height': 'auto'
             });
-        } 
+        }
     });
 
 
