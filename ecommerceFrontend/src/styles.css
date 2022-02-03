@@ -1033,7 +1033,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 #contact .info i {
     font-size: 32px;
-    color: #2dc997;
+    color: #afd6ad;
     float: left;
 }
 
@@ -1139,7 +1139,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 #contact .form button[type="submit"] {
-    background: #2dc997;
+    background: #afd6ad;
     border: 0;
     padding: 10px 24px;
     color: #fff;
@@ -1147,7 +1147,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 #contact .form button[type="submit"]:hover {
-    background: #51d8ad;
+    background: #afd6ad;
 }
 
 
