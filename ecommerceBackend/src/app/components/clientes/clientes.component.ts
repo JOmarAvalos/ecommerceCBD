@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { ClientesService } from '../../services/clientes.service';
 
 @Component({
   selector: 'app-clientes',
@@ -8,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClientesComponent implements OnInit {
 
-  constructor() { }
+  clientes: any = [];
+
+  constructor( private clientesService: ClientesService, private http: HttpClient ) {
+
+    this.clientesService.obtenerTodos()
+      .subscribe( (resp: any) => {
+        this.clientes = resp;
+        /*console.log(resp);*/
+      });
+  }
 
   ngOnInit(): void {
   }
 
+  onEdit(id: number) {
+    console.log(id);
+  }
 }

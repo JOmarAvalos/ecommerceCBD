@@ -32,7 +32,47 @@
             <div class="main-content">
                 <div class="row">
 
+                    <div class="col-lg-12">
+                        <div class="card alert">
+                            <div class="card-header">
+                                <h4>
+                                    <button type="button" class="btn btn-primary btn-flat btn-addon m-b-10 m-l-5" data-toggle="modal" data-target="#exampleModalCenter"><i class="ti-plus"></i>Nuevo</button>
+                                </h4>
+                            </div>
+                            <div class="card-body">
+                                <table class="table table-responsive table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>#ID</th>
+                                            <th>Nombre</th>
+                                            <th>Email</th>
+                                            <th>Fecha alta</th>
+                                            <th>Estatus</th>
+                                            <th>Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
 
+                                        <tr *ngFor="let mensaje of mayoreo">
+                                            <th scope="row">{{ mensaje.cve_venta_mayoreo}}</th>
+                                            <td>{{ mensaje.nombre}}</td>
+                                            <td>{{ mensaje.email }}</td>
+                                            <td>{{ mensaje.fch_creacion }}</td>
+                                            <td>
+                                                <ng-template [ngIf]="mensaje.ban_activo == '1'"><span class="badge badge-primary">Activo</span></ng-template>
+                                                <ng-template [ngIf]="mensaje.ban_activo == '0'"><span class="badge badge-danger">Inactivo</span></ng-template>
+                                            </td>
+                                            <td class="text-center">
+                                                <a href="#" class="tooltip-test" title="Editar"><i class="ti-pencil-alt pull-right"></i></a>
+                                            </td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /# column -->
 
                 </div>
                 <!-- /# row -->

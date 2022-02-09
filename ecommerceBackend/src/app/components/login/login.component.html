@@ -7,15 +7,22 @@
                         <a href="index.html"><span>My Love For CBD</span></a>
                     </div>
                     <div class="login-form">
-                        <h4>Login</h4>
-                        <form>
+                        <img src="../../../assets/images/logo/mylove.png" class="img-responsive imgLogo" alt="Cinque Terre">
+                        <form (ngSubmit)="onSubmit(formLogin)" #formLogin="ngForm">
                             <div class="form-group">
                                 <label>Usuario</label>
-                                <input type="text" class="form-control" placeholder="Usuario">
+                                <input type="text" class="form-control" name="usuario" [(ngModel)]="usuario.usuario" placeholder="Usuario" required>
+                                <span *ngIf="formLogin.submitted && formLogin.controls['usuario'].errors" class="text-danger animated fadeIn">El usuario es obligatorio</span>
                             </div>
                             <div class="form-group">
                                 <label>Contraseña</label>
-                                <input type="password" class="form-control" placeholder="Contraseña">
+                                <input type="password" class="form-control" name="contrasena" [(ngModel)]="usuario.contrasena" placeholder="Contraseña" required>
+                                <span *ngIf="formLogin.submitted && formLogin.controls['contrasena'].errors" class="text-danger animated fadeIn">El contraseña es obligatoria</span>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="recordarUsuario" [(ngModel)]="recordarUsuario"> Recordar mi usuario
+                                </label>
                             </div>
                             <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30">Entrar</button>
                         </form>

@@ -35,55 +35,37 @@
                     <div class="col-lg-12">
                         <div class="card alert">
                             <div class="card-header">
-                                <h4>Clientes </h4>
-                                <div class="card-header-right-icon">
-                                    <ul>
-                                        <li class="card-close" data-dismiss="alert"><i class="ti-close"></i></li>
-                                        <li class="card-option drop-menu"><i class="ti-settings" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" role="link"></i>
-                                            <ul class="card-option-dropdown dropdown-menu">
-                                                <li><a href="#"><i class="ti-loop"></i> Nombre</a></li>
-                                                <li><a href="#"><i class="ti-menu-alt"></i> Email</a></li>
-                                                <li><a href="#"><i class="ti-pulse"></i> Telefono</a></li>
-                                                <li><a href="#"><i class="ti-power-off"></i> Acciones</a></li>
-                                            </ul>
-                                        </li>
-
-                                    </ul>
-                                </div>
+                                <h4>
+                                    <button type="button" class="btn btn-primary btn-flat btn-addon m-b-10 m-l-5" data-toggle="modal" data-target="#exampleModalCenter"><i class="ti-plus"></i>Nuevo</button>
+                                </h4>
                             </div>
                             <div class="card-body">
                                 <table class="table table-responsive table-striped">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
-                                            <th>Cliente ID</th>
+                                            <th>#ID</th>
+                                            <th>Cliente nombre</th>
+                                            <th>Telefono</th>
                                             <th>Fecha</th>
                                             <th>Total</th>
                                             <th>Estatus</th>
+                                            <th>Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>Cliente 1</td>
-                                            <td>Enero 20 2020 12:00:00</td>
-                                            <td class="color-primary"><i class="fa fa-dollar-sign"></i>7800</td>
-                                            <td><span class="badge badge-primary">Nuevo</span></td>
+
+                                        <tr *ngFor="let pedido of pedidos">
+                                            <th scope="row">{{ pedido.cve_pedido}}</th>
+                                            <td>{{ pedido.clientenombre + ' ' + pedido.clientepaterno + ' ' + pedido.clientematerno}}</td>
+                                            <td>{{ pedido.telefono_contacto }}</td>
+                                            <td>{{ pedido.fecha_creacion }}</td>
+                                            <td>{{ pedido.total }}</td>
+                                            <td>{{ pedido.pedidoestatus }}</td>
+                                            <td class="text-center">
+                                                <a href="#" class="tooltip-test" title="Editar"><i class="ti-pencil-alt pull-right"></i></a>
+                                            </td>
                                         </tr>
-                                        <tr>
-                                            <th scope="row">2</th>
-                                            <td>Cliente 2</td>
-                                            <td>Enero 15 2020 12:00:00</td>
-                                            <td class="color-primary"><i class="fa fa-dollar-sign"></i>500</td>
-                                            <td><span class="badge badge-primary">Nuevo</span></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">3</th>
-                                            <td>Cliente 3</td>
-                                            <td>Enero 13 2020 12:00:00</td>
-                                            <td class="color-primary"><i class="fa fa-dollar-sign"></i>1000</td>
-                                            <td><span class="badge badge-primary">Nuevo</span></td>
-                                        </tr>
+
                                     </tbody>
                                 </table>
                             </div>

@@ -35,54 +35,35 @@
                     <div class="col-lg-12">
                         <div class="card alert">
                             <div class="card-header">
-                                <h4>Clientes </h4>
-                                <div class="card-header-right-icon">
-                                    <ul>
-                                        <li class="card-close" data-dismiss="alert"><i class="ti-close"></i></li>
-                                        <li class="card-option drop-menu"><i class="ti-settings" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" role="link"></i>
-                                            <ul class="card-option-dropdown dropdown-menu">
-                                                <li><a href="#"><i class="ti-loop"></i> Nombre</a></li>
-                                                <li><a href="#"><i class="ti-menu-alt"></i> Email</a></li>
-                                                <li><a href="#"><i class="ti-pulse"></i> Telefono</a></li>
-                                                <li><a href="#"><i class="ti-power-off"></i> Acciones</a></li>
-                                            </ul>
-                                        </li>
-
-                                    </ul>
-                                </div>
+                                <h4>
+                                    <button type="button" class="btn btn-primary btn-flat btn-addon m-b-10 m-l-5" data-toggle="modal" data-target="#exampleModalCenter"><i class="ti-plus"></i>Nuevo</button>
+                                </h4>
                             </div>
                             <div class="card-body">
                                 <table class="table table-responsive table-striped">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
+                                            <th>#ID</th>
                                             <th>Nombre</th>
                                             <th>Email</th>
-                                            <th>Teléfono</th>
+                                            <th>Tipo cliente</th>
                                             <th>Estatus</th>
+                                            <th>Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>Nombre 1</td>
-                                            <td>nombre@correo.com</td>
-                                            <td class="color-primary">55 5555-5555</td>
-                                            <td><span class="badge badge-primary">Nuevo</span></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">2</th>
-                                            <td>Nombre 3</td>
-                                            <td>nombre@correo.com</td>
-                                            <td class="color-primary">55 5555-5555</td>
-                                            <td><span class="badge badge-primary">Nuevo</span></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">3</th>
-                                            <td>Nombre 3</td>
-                                            <td>nombre@correo.com</td>
-                                            <td class="color-primary">55 5555-5555</td>
-                                            <td><span class="badge badge-primary">Nuevo</span></td>
+                                        <tr *ngFor="let cliente of clientes">
+                                            <th scope="row">{{ cliente.cve_cliente}}</th>
+                                            <td>{{ cliente.nombre + ' ' + cliente.paterno + ' ' + cliente.materno}}</td>
+                                            <td>{{ cliente.email }}</td>
+                                            <td class="color-primary">{{ cliente.tipocliente }}</td>
+                                            <td>
+                                                <ng-template [ngIf]="cliente.ban_activo == '1'"><span class="badge badge-primary">Activo</span></ng-template>
+                                                <ng-template [ngIf]="cliente.ban_activo == '0'"><span class="badge badge-danger">Inactivo</span></ng-template>
+                                            </td>
+                                            <td class="text-center">
+                                                <a href="" class="tooltip-test" title="Editar" (click)="onEdit(cliente.cve_cliente)"><i class="ti-pencil-alt pull-right"></i></a>
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>

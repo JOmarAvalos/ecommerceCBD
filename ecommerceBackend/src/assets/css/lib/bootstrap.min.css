@@ -7111,12 +7111,14 @@ button.close {
 
 .modal-title {
     margin: 0;
-    line-height: 1.42857143
+    line-height: 1.42857143;
+    color: #878787;
 }
 
 .modal-body {
     position: relative;
-    padding: 15px
+    padding: 15px;
+    color: #878787;
 }
 
 .modal-footer {
