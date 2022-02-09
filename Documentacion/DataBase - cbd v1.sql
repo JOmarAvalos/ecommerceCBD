@@ -219,12 +219,52 @@ INSERT INTO cbddesarrollo.cbd_cata_tipo_cliente (nombre, ban_activo) VALUES ('Ma
 
 
 ---------------------------------------
+-- cbddesarrollo.cbd_clientes
+---------------------------------------
+
+create table cbddesarrollo.cbd_clientes
+(
+  cve_cliente serial NOT NULL,
+  nombre character varying(100) NOT NULL,
+  paterno character varying(100) NOT NULL,
+  materno character varying(100),
+  email character varying(80) NOT NULL,
+  contrasena character varying(50) NOT NULL,
+  telefono character varying(30) NOT NULL,
+  fch_nacimiento timestamp without time zone NOT NULL,
+  id_genero integer NOT NULL,
+  id_ubicacion integer NOT NULL,
+  id_tipo_cliente integer NOT NULL,
+  id_usuario_crea integer,
+  id_usuario_modifica integer,
+  fch_creacion timestamp without time zone NOT NULL DEFAULT now(),
+  fch_modificacion timestamp without time zone,
+  ban_activo integer NOT NULL,
+
+  CONSTRAINT cbd_clientes_pkey PRIMARY KEY (cve_cliente),
+
+  CONSTRAINT fkey_cbd_clientes_cbd_cata_genero_id FOREIGN KEY (id_genero)
+      REFERENCES cbddesarrollo.cbd_cata_genero (cve_genero) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION,
+
+  CONSTRAINT fkey_cbd_clientes_cbd_cata_ubicacion_id FOREIGN KEY (id_ubicacion)
+      REFERENCES cbddesarrollo.cbd_cata_ubicacion (cve_ubicacion) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION,
+
+  CONSTRAINT fkey_cbd_clientes_cbd_cata_tipo_cliente_id FOREIGN KEY (id_tipo_cliente)
+      REFERENCES cbddesarrollo.cbd_cata_tipo_cliente (cve_tipo_cliente) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+);
+
+
+---------------------------------------
 -- cbddesarrollo.cbd_direcciones_entrega
 ---------------------------------------
 
 create table cbddesarrollo.cbd_direcciones_entrega
 (
   cve_direccion_entrega serial NOT NULL,
+  id_cliente integer NOT NULL,
   nombre_persona_recibe character varying(200) NOT NULL,
   pais character varying(50) NOT NULL,
   estado character varying(50) NOT NULL,
@@ -242,7 +282,11 @@ create table cbddesarrollo.cbd_direcciones_entrega
   fch_modificacion timestamp without time zone,
   ban_activo integer NOT NULL,
 
-  CONSTRAINT cbd_direcciones_entrega_pkey PRIMARY KEY (cve_direccion_entrega)
+  CONSTRAINT cbd_direcciones_entrega_pkey PRIMARY KEY (cve_direccion_entrega),
+
+  CONSTRAINT fkey_cbd_direcciones_entrega_cbd_clientes_id FOREIGN KEY (id_cliente)
+      REFERENCES cbddesarrollo.cbd_clientes (cve_cliente) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
 );
 
 
@@ -253,6 +297,7 @@ create table cbddesarrollo.cbd_direcciones_entrega
 create table cbddesarrollo.cbd_direcciones_facturacion
 (
   cve_direccion_facturacion serial NOT NULL,
+  id_cliente integer NOT NULL,
   nombre character varying(200) NOT NULL,
   rfc character varying(20) NOT NULL,
   pais character varying(50) NOT NULL,
@@ -270,61 +315,10 @@ create table cbddesarrollo.cbd_direcciones_facturacion
   fch_modificacion timestamp without time zone,
   ban_activo integer NOT NULL,
 
-  CONSTRAINT cbd_direcciones_facturacion_pkey PRIMARY KEY (cve_direccion_facturacion)
-);
+  CONSTRAINT cbd_direcciones_facturacion_pkey PRIMARY KEY (cve_direccion_facturacion),
 
-
----------------------------------------
--- cbddesarrollo.cbd_clientes
----------------------------------------
-
-create table cbddesarrollo.cbd_clientes
-(
-  cve_cliente serial NOT NULL,
-  nombre character varying(100) NOT NULL,
-  paterno character varying(100) NOT NULL,
-  materno character varying(100),
-  email character varying(80) NOT NULL,
-  contrasena character varying(50) NOT NULL,
-  telefono character varying(30) NOT NULL,
-  fch_nacimiento timestamp without time zone NOT NULL,
-  id_genero integer NOT NULL,
-  id_tipo_identificacion integer NOT NULL,
-  identificacion_numero character varying(30) NOT NULL,
-  id_ubicacion integer NOT NULL,
-  id_tipo_cliente integer NOT NULL,
-  id_direccion_entrega integer,
-  id_direccion_facturacion integer,
-  id_usuario_crea integer,
-  id_usuario_modifica integer,
-  fch_creacion timestamp without time zone NOT NULL DEFAULT now(),
-  fch_modificacion timestamp without time zone,
-  ban_activo integer NOT NULL,
-
-  CONSTRAINT cbd_clientes_pkey PRIMARY KEY (cve_cliente),
-
-  CONSTRAINT fkey_cbd_clientes_cbd_cata_genero_id FOREIGN KEY (id_genero)
-      REFERENCES cbddesarrollo.cbd_cata_genero (cve_genero) MATCH SIMPLE
-      ON UPDATE NO ACTION ON DELETE NO ACTION,
-
-  CONSTRAINT fkey_cbd_clientes_cbd_cata_tipo_identificacion_id FOREIGN KEY (id_tipo_identificacion)
-      REFERENCES cbddesarrollo.cbd_cata_tipo_identificacion (cve_tipo_identificacion) MATCH SIMPLE
-      ON UPDATE NO ACTION ON DELETE NO ACTION,
-
-  CONSTRAINT fkey_cbd_clientes_cbd_cata_ubicacion_id FOREIGN KEY (id_ubicacion)
-      REFERENCES cbddesarrollo.cbd_cata_ubicacion (cve_ubicacion) MATCH SIMPLE
-      ON UPDATE NO ACTION ON DELETE NO ACTION,
-
-  CONSTRAINT fkey_cbd_clientes_cbd_cata_tipo_cliente_id FOREIGN KEY (id_tipo_cliente)
-      REFERENCES cbddesarrollo.cbd_cata_tipo_cliente (cve_tipo_cliente) MATCH SIMPLE
-      ON UPDATE NO ACTION ON DELETE NO ACTION,
-
-  CONSTRAINT fkey_cbd_clientes_cbd_direcciones_entrega_id FOREIGN KEY (id_direccion_entrega)
-      REFERENCES cbddesarrollo.cbd_direcciones_entrega (cve_direccion_entrega) MATCH SIMPLE
-      ON UPDATE NO ACTION ON DELETE NO ACTION,
-
-  CONSTRAINT fkey_cbd_clientes_cbd_direcciones_facturacion_id FOREIGN KEY (id_direccion_facturacion)
-      REFERENCES cbddesarrollo.cbd_direcciones_facturacion (cve_direccion_facturacion) MATCH SIMPLE
+  CONSTRAINT fkey_cve_direccion_facturacion_cbd_clientes_id FOREIGN KEY (id_cliente)
+      REFERENCES cbddesarrollo.cbd_clientes (cve_cliente) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION
 );
 
@@ -349,6 +343,22 @@ INSERT INTO cbddesarrollo.cbd_cata_pedio_estatus (nombre, ban_activo) VALUES ('D
 
 
 ---------------------------------------
+-- cbddesarrollo.cbd_cata_metodo_pago
+---------------------------------------
+
+create table cbddesarrollo.cbd_cata_metodo_pago
+(
+  cve_metodo_pago serial NOT NULL,
+  nombre character varying(20) NOT NULL,
+  ban_activo integer NOT NULL,
+
+  CONSTRAINT cbd_cata_metodo_pago_pkey PRIMARY KEY (cve_metodo_pago)
+);
+
+INSERT INTO cbddesarrollo.cbd_cata_metodo_pago (nombre, ban_activo) VALUES ('Scotiabank', 1);
+
+
+---------------------------------------
 -- cbddesarrollo.cbd_pedidos
 ---------------------------------------
 
@@ -356,16 +366,22 @@ create table cbddesarrollo.cbd_pedidos
 (
   cve_pedido serial NOT NULL,
   id_cliente integer NOT NULL,
-  fch_pedido timestamp without time zone NOT NULL,
-  total numeric(10,2) NOT NULL,
-  costo_envio numeric(10,2) NOT NULL,
+  telefono_contacto character varying(30),
+  subtotal numeric(10,2) NOT NULL,
+  descuento numeric(10,2) NOT NULL,
   iva numeric(10,2) NOT NULL,
-  guia character varying(20),
+  costo_envio numeric(10,2) NOT NULL,
+  total numeric(10,2) NOT NULL,
+  guia_envio character varying(20),
   id_pedido_estatus integer NOT NULL,
   id_direccion_entrega integer NOT NULL,
   id_direccion_facturacion integer,
-  numero_banco_pago character varying(20),
+  id_metodo_pago integer NOT NULL,
+  numero_referencia_pago character varying(20),
+  fecha_creacion timestamp without time zone NOT NULL,
   fch_envio timestamp without time zone,
+  fch_cancelacion timestamp without time zone,
+  fch_devolucion timestamp without time zone,
   id_usuario_modifica integer,
   fch_modificacion timestamp without time zone,
 
@@ -385,6 +401,252 @@ create table cbddesarrollo.cbd_pedidos
 
   CONSTRAINT fkey_cbd_pedidos_cbd_direcciones_facturacion_id FOREIGN KEY (id_direccion_facturacion)
       REFERENCES cbddesarrollo.cbd_direcciones_facturacion (cve_direccion_facturacion) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION,
+
+  CONSTRAINT fkey_cbd_pedidos_cbd_cata_metodo_pago_id FOREIGN KEY (id_metodo_pago)
+      REFERENCES cbddesarrollo.cbd_cata_metodo_pago (cve_metodo_pago) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION
+);
+
+
+---------------------------------------
+-- cbddesarrollo.cbd_cata_categoria_articulo
+---------------------------------------
+
+create table cbddesarrollo.cbd_cata_categoria_articulo
+(
+  cve_categoria_articulo serial NOT NULL,
+  nombre character varying(30) NOT NULL,
+  ban_activo integer NOT NULL,
+
+  CONSTRAINT cbd_cata_categoria_articulo_pkey PRIMARY KEY (cve_categoria_articulo)
+);
+
+INSERT INTO cbddesarrollo.cbd_cata_categoria_articulo (nombre, ban_activo) VALUES ('Aceite', 1);
+INSERT INTO cbddesarrollo.cbd_cata_categoria_articulo (nombre, ban_activo) VALUES ('Bálsamo', 1);
+INSERT INTO cbddesarrollo.cbd_cata_categoria_articulo (nombre, ban_activo) VALUES ('Bebidas', 1);
+INSERT INTO cbddesarrollo.cbd_cata_categoria_articulo (nombre, ban_activo) VALUES ('Cápsulas', 1);
+INSERT INTO cbddesarrollo.cbd_cata_categoria_articulo (nombre, ban_activo) VALUES ('Cuidado personal', 1);
+INSERT INTO cbddesarrollo.cbd_cata_categoria_articulo (nombre, ban_activo) VALUES ('Gomitas', 1);
+INSERT INTO cbddesarrollo.cbd_cata_categoria_articulo (nombre, ban_activo) VALUES ('Gotas', 1);
+INSERT INTO cbddesarrollo.cbd_cata_categoria_articulo (nombre, ban_activo) VALUES ('Hempettes', 1);
+INSERT INTO cbddesarrollo.cbd_cata_categoria_articulo (nombre, ban_activo) VALUES ('Mascotas', 1);
+INSERT INTO cbddesarrollo.cbd_cata_categoria_articulo (nombre, ban_activo) VALUES ('Sticks', 1);
+INSERT INTO cbddesarrollo.cbd_cata_categoria_articulo (nombre, ban_activo) VALUES ('Vapes', 1);
+INSERT INTO cbddesarrollo.cbd_cata_categoria_articulo (nombre, ban_activo) VALUES ('Wraps y conos', 1);
+
+---------------------------------------
+-- cbddesarrollo.cbd_cata_subcategoria_articulo
+---------------------------------------
+
+create table cbddesarrollo.cbd_cata_subcategoria_articulo
+(
+  cve_subcategoria_articulo serial NOT NULL,
+  nombre character varying(30) NOT NULL,
+  ban_activo integer NOT NULL,
+
+  CONSTRAINT cbd_cata_subcategoria_articulo_pkey PRIMARY KEY (cve_subcategoria_articulo)
+);
+
+INSERT INTO cbddesarrollo.cbd_cata_subcategoria_articulo (nombre, ban_activo) VALUES ('Aceite', 1);
+INSERT INTO cbddesarrollo.cbd_cata_subcategoria_articulo (nombre, ban_activo) VALUES ('Alivio del dolor', 1);
+INSERT INTO cbddesarrollo.cbd_cata_subcategoria_articulo (nombre, ban_activo) VALUES ('Baterías', 1);
+INSERT INTO cbddesarrollo.cbd_cata_subcategoria_articulo (nombre, ban_activo) VALUES ('Cartuchos', 1);
+INSERT INTO cbddesarrollo.cbd_cata_subcategoria_articulo (nombre, ban_activo) VALUES ('Energia', 1);
+
+INSERT INTO cbddesarrollo.cbd_cata_subcategoria_articulo (nombre, ban_activo) VALUES ('Fórmula nocturna', 1);
+INSERT INTO cbddesarrollo.cbd_cata_subcategoria_articulo (nombre, ban_activo) VALUES ('Gatos', 1);
+INSERT INTO cbddesarrollo.cbd_cata_subcategoria_articulo (nombre, ban_activo) VALUES ('Multivitamínico', 1);
+INSERT INTO cbddesarrollo.cbd_cata_subcategoria_articulo (nombre, ban_activo) VALUES ('Oso', 1);
+INSERT INTO cbddesarrollo.cbd_cata_subcategoria_articulo (nombre, ban_activo) VALUES ('Para dormir', 1);
+
+INSERT INTO cbddesarrollo.cbd_cata_subcategoria_articulo (nombre, ban_activo) VALUES ('Perros', 1);
+INSERT INTO cbddesarrollo.cbd_cata_subcategoria_articulo (nombre, ban_activo) VALUES ('Veganas', 1);
+
+
+---------------------------------------
+-- cbddesarrollo.cbd_articulos
+---------------------------------------
+
+create table cbddesarrollo.cbd_articulos
+(
+  cve_articulo serial NOT NULL,
+  marca character varying(100) NOT NULL,
+  sku character varying(20) NOT NULL,
+  nombre character varying(100) NOT NULL,
+  id_categoria_articulo integer NOT NULL,
+  id_subcategoria_articulo integer,
+  concentracion character varying(30),
+  presentacion character varying(30),
+  sabor character varying(30),
+  descripcion_corta character varying(500) NOT NULL,
+  descripcion_larga text,
+  precio numeric(10,2) NOT NULL,
+  precio_con_descuento numeric(10,2),
+  inventario_cantidad integer NOT NULL,
+  orden integer NOT NULL,
+  id_usuario_crea integer NOT NULL,
+  id_usuario_modifica integer,
+  fch_creacion timestamp without time zone NOT NULL,
+  fch_modificacion timestamp without time zone,
+  ban_activo integer NOT NULL,
+
+  CONSTRAINT cbd_articulos_pkey PRIMARY KEY (cve_articulo),
+
+  CONSTRAINT fkey_cbd_articulos_cbd_cata_categoria_articulo_id FOREIGN KEY (id_categoria_articulo)
+      REFERENCES cbddesarrollo.cbd_cata_categoria_articulo (cve_categoria_articulo) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+);
+
+INSERT INTO cbddesarrollo.cbd_articulos (marca, sku, nombre, id_categoria_articulo, id_subcategoria_articulo, concentracion, presentacion, sabor, descripcion_corta, descripcion_larga, precio, precio_con_descuento, inventario_cantidad, orden, id_usuario_crea, fch_creacion, ban_activo) VALUES ();
+--/// Revisar: articulos.sql ///---
+
+
+---------------------------------------
+-- cbddesarrollo.cbd_pedido_articulos
+---------------------------------------
+
+create table cbddesarrollo.cbd_pedido_articulos
+(
+  cve_pedido_articulo serial NOT NULL,
+  id_pedido integer NOT NULL,
+  id_articulo integer NOT NULL,
+  cantidad integer NOT NULL,
+  precio_unitario numeric(10,2) NOT NULL,
+
+  CONSTRAINT cbd_pedido_articulos_pkey PRIMARY KEY (cve_pedido_articulo),
+
+  CONSTRAINT fkey_cbd_pedido_articulos_cbd_pedidos_id FOREIGN KEY (id_pedido)
+      REFERENCES cbddesarrollo.cbd_pedidos (cve_pedido) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION,
+
+  CONSTRAINT fkey_cbd_pedido_articulos_cbd_articulos_id FOREIGN KEY (id_articulo)
+      REFERENCES cbddesarrollo.cbd_articulos (cve_articulo) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+);
+
+
+---------------------------------------
+-- cbddesarrollo.cbd_articulo_fotografias
+---------------------------------------
+
+create table cbddesarrollo.cbd_articulo_fotografias
+(
+  cve_articulo_fotografia serial NOT NULL,
+  id_articulo integer NOT NULL,
+  nombre character varying(30) NOT NULL,
+  descripcion character varying(100),
+  ruta character varying(100) NOT NULL,
+  ruta_miniatura character varying(100) NOT NULL,
+  orden character varying(100) NOT NULL,
+  id_usuario_crea integer NOT NULL,
+  id_usuario_modifica integer,
+  fch_creacion timestamp without time zone NOT NULL,
+  fch_modificacion timestamp without time zone,
+  ban_activo integer NOT NULL,
+
+  CONSTRAINT cbd_articulo_fotografias_pkey PRIMARY KEY (cve_articulo_fotografia),
+
+  CONSTRAINT fkey_cbd_articulo_fotografias_cbd_articulos_id FOREIGN KEY (id_articulo)
+      REFERENCES cbddesarrollo.cbd_articulos (cve_articulo) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+);
+
+
+
+---------------------------------------
+-- cbddesarrollo.cbd_articulos_historico
+---------------------------------------
+
+create table cbddesarrollo.cbd_articulos_historico
+(
+  cve_articulo integer,
+  marca character varying(100),
+  sku character varying(20),
+  nombre character varying(100),
+  id_categoria_articulo integer,
+  id_subcategoria_articulo integer,
+  concentracion character varying(30),
+  presentacion character varying(30),
+  sabor character varying(30),
+  descripcion_corta character varying(500),
+  descripcion_larga text,
+  precio numeric(10,2),
+  precio_con_descuento numeric(10,2),
+  inventario_cantidad integer,
+  orden integer,
+  id_usuario_crea integer,
+  id_usuario_modifica integer,
+  fch_creacion timestamp without time zone,
+  fch_modificacion timestamp without time zone,
+  ban_activo integer
+);
+
+---------------------------------------
+-- cbddesarrollo.cbd_pedidos_historico
+---------------------------------------
+
+create table cbddesarrollo.cbd_pedidos_historico
+(
+  cve_pedido integer,
+  id_cliente integer,
+  telefono_contacto character varying(30),
+  subtotal numeric(10,2),
+  descuento numeric(10,2),
+  iva numeric(10,2),
+  costo_envio numeric(10,2),
+  total numeric(10,2),
+  guia_envio character varying(20),
+  id_pedido_estatus integer,
+  id_direccion_entrega integer,
+  id_direccion_facturacion integer,
+  id_metodo_pago integer,
+  numero_referencia_pago character varying(20),
+  fecha_creacion timestamp without time zone,
+  fch_envio timestamp without time zone,
+  fch_cancelacion timestamp without time zone,
+  fch_devolucion timestamp without time zone,
+  id_usuario_modifica integer,
+  fch_modificacion timestamp without time zone
+);
+
+
+---------------------------------------
+-- cbddesarrollo.cbd_blog
+---------------------------------------
+
+create table cbddesarrollo.cbd_blog
+(
+  cve_blog serial NOT NULL,
+  titulo character varying(100) NOT NULL,
+  imagen_ruta character varying(100) NOT NULL,
+  descripcion character varying(1000) NOT NULL,
+  autor character varying(100) NOT NULL,
+  id_usuario_crea integer NOT NULL,
+  id_usuario_modifica integer,
+  fch_creacion timestamp without time zone NOT NULL,
+  fch_modificacion timestamp without time zone,
+  ban_activo integer NOT NULL,
+
+  CONSTRAINT cbd_blog_pkey PRIMARY KEY (cve_blog)
+);
+
+
+---------------------------------------
+-- cbddesarrollo.cbd_ventas_mayoreo
+---------------------------------------
+
+create table cbddesarrollo.cbd_ventas_mayoreo
+(
+  cve_venta_mayoreo serial NOT NULL,
+  nombre character varying(100) NOT NULL,
+  email character varying(80) NOT NULL,
+  mensaje character varying(1000) NOT NULL,
+  fch_creacion timestamp without time zone  NOT NULL,
+  fch_modificacion timestamp without time zone,
+  id_usuario_modifica integer,
+  ban_activo integer NOT NULL,
+
+  CONSTRAINT cbd_ventas_mayoreo_pkey PRIMARY KEY (cve_venta_mayoreo)
 );
 
