@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,6 +23,8 @@ import { MiPerfilComponent } from './components/mi-perfil/mi-perfil.component';
 import { MenuComponent } from './components/shared/menu/menu.component';
 import { HeaderComponent } from './components/shared/header/header.component';
 
+import { ScriptLoaderService } from './script-loader.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,9 +46,12 @@ import { HeaderComponent } from './components/shared/header/header.component';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    ScriptLoaderService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -18,7 +18,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
   // Query verificacion
   $query = "SELECT cli.cve_cliente, cli.nombre, cli.paterno, cli.materno, cli.email, 
-                   cli.telefono, cli.fch_nacimiento, cli.fch_creacion, cli.ban_activo, cge.nombre AS genero, 
+                   cli.telefono, 
+                   to_char(cli.fch_nacimiento, 'YYYY-MM-DD') AS fch_nacimiento, 
+                   cli.fch_creacion, cli.id_genero, 
+                   cli.id_ubicacion, cli.id_tipo_cliente, cli.ban_activo, cge.nombre AS genero, 
                    cub.estado AS ubicacion, ctc.nombre AS tipocliente
               FROM cbddesarrollo.cbd_clientes AS cli 
               LEFT JOIN cbddesarrollo.cbd_cata_genero AS cge ON cge.cve_genero = cli.id_genero

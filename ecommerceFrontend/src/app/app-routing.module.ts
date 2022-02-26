@@ -27,7 +27,7 @@ const routes: Routes = [
   { path: 'mayoreo', component: MayoreoComponent },
   { path: 'calculadora', component: CalculadoraComponent },
   { path: 'enConstruccion', component: EnConstruccionComponent },
-  { path: '**', pathMatch: 'full', redirectTo: 'enConstruccion'}
+  { path: '**', pathMatch: 'full', redirectTo: 'inicio'}
 ];
 
 @NgModule({

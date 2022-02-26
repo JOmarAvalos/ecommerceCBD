@@ -20,7 +20,7 @@
                     <div class="page-header">
                         <div class="page-title">
                             <ol class="breadcrumb text-right">
-                                <li><a href="#">Dashboard</a></li>
+                                <li><a routerLink="/dashboard">Dashboard</a></li>
                                 <li class="active">Mayoreo</li>
                             </ol>
                         </div>
@@ -36,7 +36,7 @@
                         <div class="card alert">
                             <div class="card-header">
                                 <h4>
-                                    <button type="button" class="btn btn-primary btn-flat btn-addon m-b-10 m-l-5" data-toggle="modal" data-target="#exampleModalCenter"><i class="ti-plus"></i>Nuevo</button>
+                                    <button type="button" (click)="nuevo()" class="btn btn-primary btn-flat btn-addon m-b-10 m-l-5" data-toggle="modal" data-target="#exampleModalCenter"><i class="ti-plus"></i>Nuevo</button>
                                 </h4>
                             </div>
                             <div class="card-body">
@@ -57,13 +57,14 @@
                                             <th scope="row">{{ mensaje.cve_venta_mayoreo}}</th>
                                             <td>{{ mensaje.nombre}}</td>
                                             <td>{{ mensaje.email }}</td>
-                                            <td>{{ mensaje.fch_creacion }}</td>
+                                            <td>{{ mensaje.fch_creacion | date:'medium' }}</td>
                                             <td>
-                                                <ng-template [ngIf]="mensaje.ban_activo == '1'"><span class="badge badge-primary">Activo</span></ng-template>
-                                                <ng-template [ngIf]="mensaje.ban_activo == '0'"><span class="badge badge-danger">Inactivo</span></ng-template>
+                                                <ng-template [ngIf]="mensaje.ban_activo == '1'"><span class="badge badge-primary">Nuevo</span></ng-template>
+                                                <ng-template [ngIf]="mensaje.ban_activo == '2'"><span class="badge badge-info">Proceso</span></ng-template>
+                                                <ng-template [ngIf]="mensaje.ban_activo == '0'"><span class="badge badge-default">Atendido</span></ng-template>
                                             </td>
                                             <td class="text-center">
-                                                <a href="#" class="tooltip-test" title="Editar"><i class="ti-pencil-alt pull-right"></i></a>
+                                                <a (click)="editar( mensaje.cve_venta_mayoreo )" class="tooltip-test" title="Editar" data-toggle="modal" data-target="#exampleModalCenter"><i class="ti-pencil-alt pull-center"></i></a>
                                             </td>
                                         </tr>
 
@@ -84,3 +85,94 @@
     <!-- /# main -->
 </div>
 <!-- /# content wrap -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="exampleModalLongTitle">Mayoreo nuevo</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="card alert">
+                    <div class="card-body">
+                        <div class="basic-form">
+
+
+                            <form autocomplete="off" [formGroup]="forma" (ngSubmit)="guardar()">
+                                <input type="hidden" formControlName="id">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group" [class.has-error]="nombreNoValido">
+                                            <label>Nombre</label>
+                                            <input type="text" class="form-control" placeholder="Nombre" formControlName="nombre">
+                                            <small *ngIf="nombreNoValido" class="text-danger">Ingrese nombre</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group" [class.has-error]="emailNoValido">
+                                            <label>Email</label>
+                                            <input type="text" class="form-control" placeholder="Email" formControlName="email">
+                                            <small *ngIf="emailNoValido" class="text-danger">Ingrese email valido</small>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="form-group" [class.has-error]="mensajeNoValido">
+                                            <label>Mensaje</label>
+                                            <input type="text" class="form-control" placeholder="Mensaje" formControlName="mensaje">
+                                            <small *ngIf="mensajeNoValido" class="text-danger">Ingrese mensaje</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6"></div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group" [class.has-error]="estatusNoValido">
+                                            <label>Estatus</label>
+                                            <select class="form-control" formControlName="estatus">
+                                                <option value="1">Nuevo</option>
+                                                <option value="2">Proceso</option>
+                                                <option value="0">Atendido</option>
+                                            </select>
+                                            <small *ngIf="estatusNoValido" class="text-danger">Ingrese estatus</small>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="modal-footer">
+                                            <div class="form-group fa-pull-right">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                                <button type="submit" class="btn btn-primary">Guardar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div *ngIf="mensajeError" class="alert alert-danger alert-dismissable">
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                    <strong>¡Atencion!</strong> {{ respuesta.message }}.
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>

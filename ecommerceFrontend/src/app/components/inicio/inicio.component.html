@@ -1,1 +1,476 @@
-<p>inicio works!</p>
+<!--==========================
+  Header
+  ============================-->
+<header id="header">
+    <div class="container">
+
+        <div id="logo" class="pull-left">
+            <a href="#home">
+                <img src="../../../assets/img/logo/mylove_blanco.png" class="img-responsive" alt="MyLoveCBD Logo">
+            </a>
+        </div>
+
+        <nav id="nav-menu-container">
+
+            <div id="tituloWeb">
+                <h1>MY LOVE FOR CBD</h1>
+            </div>
+            <br><br>
+            <ul class="nav-menu">
+                <li class="menu-active"><a href="#home">Inicio</a></li>
+                <li><a href="#about">¿Quiénes somos?</a></li>
+                <li><a href="#products">Tienda</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#miCuenta">Mi Cuenta</a></li>
+                <li><a href="#contact">Venta al mayoreo</a></li>
+            </ul>
+        </nav>
+        <!-- #nav-menu-container -->
+    </div>
+</header>
+<!-- #header -->
+
+<!--==========================
+    home Section
+  ============================-->
+<section id="home">
+    <div class="home-container">
+
+        <!--
+        <div id="carouselWeb" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <!-- Recorrido del arreglo 
+                <ng-container *ngFor="let imagenWeb of imagenesWeb; let i = index">
+                    <!-- Solo activa la primera imagen "class:active"
+                    <div *ngIf="i == 0" class="carousel-item active">
+                        <img class="d-block w-100" [src]="imagenWeb.img" [alt]="imagenWeb.nombre">
+                    </div>
+                    <div *ngIf="i != 0" class="carousel-item">
+                        <img class="d-block w-100" [src]="imagenWeb.img" [alt]="imagenWeb.nombre">
+                    </div>
+                </ng-container>
+            </div>
+            <a class="carousel-control-prev" data-target="#carouselWeb" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Anterior</span>
+            </a>
+            <a class="carousel-control-next" data-target="#carouselWeb" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Siguiente</span>
+            </a>
+        </div>
+        -->
+
+        <!-- #movil 
+        <div id="tituloMovil">
+            <h1>INGENIERÍA DE SERVICIO EN TELECOMUNICACIONES</h1>
+        </div>
+        <div id="carouselMovil" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <ng-container *ngFor="let imagenMovil of imagenesMovil; let i = index">
+                    <div *ngIf="i == 0" class="carousel-item active">
+                        <img class="d-block w-100" [src]="imagenMovil.img" [alt]="imagenMovil.nombre">
+                    </div>
+                    <div *ngIf="i != 0" class="carousel-item">
+                        <img class="d-block w-100" [src]="imagenMovil.img" [alt]="imagenMovil.nombre">
+                    </div>
+                </ng-container>
+            </div>
+            <a class="carousel-control-prev" data-target="#carouselMovil" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Anterior</span>
+            </a>
+            <a class="carousel-control-next" data-target="#carouselMovil" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Siguiente</span>
+            </a>
+        </div>
+        <!-- #movil - Fin 
+        -->
+
+    </div>
+</section>
+<!-- #home -->
+
+
+
+
+
+
+
+<main id="main">
+
+    <!--==========================
+      About Us Section
+    ============================-->
+    <section id="about">
+        <div class="container">
+            <div class="row about-container">
+
+                <div class="col-lg-12 content order-lg-1 order-2">
+                    <h2 class="title">¿Quiénes somos?</h2>
+                    <p>
+                        Somos una empresa dedicada a la distribución de CBD con fines terapéuticos que brinden bienestar a nuestros clientes con la esperanza de mejorar su calidad de vida aliviando malestares como depresión, estrés físico y /o mental, insomnio, ansiedad, etc.
+                        Nuestra amplia selección de productos de CBD que además son de acción rápida, es conocido por mejorar el bienestar físico y mental de nuestros clientes, ganándonos su confianza y preferencia. My Love for CBD es totalmente transparente,
+                        compartimos los informes de laboratorio y publicamos blogs educativos en línea.
+                    </p>
+
+                    <div class="icon-box wow fadeInUp">
+                        <h4 class="title"><a href="">Misión</a></h4>
+                        <p class="description">En My Love for CBD, nos esforzamos por mejorar la vida diaria de las personas con los productos de CBD más convenientes y efectivos de todo el mundo. La relajación y el bienestar son más fáciles! Ya que, tanto el estrés físico
+                            como el mental se vuelven manejables.</p>
+                    </div>
+
+                    <div class="icon-box wow fadeInUp" data-wow-delay="0.2s">
+                        <h4 class="title"></h4>
+                        <p class="description"></p>
+                    </div>
+
+                </div>
+
+                <div class="col-lg-6 background order-lg-2 order-1 wow fadeInRight"></div>
+            </div>
+
+        </div>
+    </section>
+    <!-- #about -->
+
+
+
+    <!--==========================
+      Tienda Section
+    ============================-->
+    <section id="tienda">
+        <div class="container wow fadeInUp">
+            <div class="section-header">
+                <h3 class="section-title">Tienda</h3>
+                <p class="section-description"></p>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul id="tienda-flters">
+                        <li data-filter=".filter-seguridad-info, .filter-seguridad-elect, .filter-computo" class="filter-active">Todo</li>
+                        <li data-filter=".filter-seguridad-info">Clasificación 1</li>
+                        <li data-filter=".filter-seguridad-elect">Clasificación 2</li>
+                        <li data-filter=".filter-computo">Clasificación 3</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row" id="tienda-wrapper">
+
+                <!--
+                <ng-container *ngFor="let imagenProducto of imagenesProducto; let i = index">
+
+                    <div data-toggle="modal" [class]="'col-lg-3 col-md-6 tienda-item '+imagenProducto.clasificacion" [attr.data-target]="'#modalCenterProducto_'+imagenProducto.id">
+                        <img [src]="imagenProducto.img" alt="">
+                        <div class="details">
+                            <h4>{{ imagenProducto.titulo }}</h4>
+                            <span>{{ imagenProducto.descripcionCorta }}</span>
+                        </div>
+                    </div>
+
+                </ng-container>
+                -->
+            </div>
+
+        </div>
+
+        <!-- Tienda Modal  -->
+        <!--
+        <ng-container *ngFor="let imagenModalProducto of imagenesProducto; let i = index">
+            <div class="modal fade" [id]="'modalCenterProducto_'+imagenModalProducto.id" tabindex="-1" role="dialog" aria-labelledby="modalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="section-title">{{ imagenModalProducto.titulo }} - {{ imagenModalProducto.descripcionCorta }}</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                        </div>
+                        <div class="modal-body">
+
+                            <img [src]="imagenModalProducto.img" alt="">
+                            <hr> {{ imagenModalProducto.descripcionLarga }}
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btnClose" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+        -->
+
+    </section>
+    <!-- #tienda -->
+
+    <!--==========================
+      Blog Section
+    ============================-->
+    <section id="blog">
+        <div class="container wow fadeInUp">
+            <div class="section-header">
+                <h3 class="section-title">Blog</h3>
+                <p class="section-description"></p>
+            </div>
+            <div class="row">
+
+                <!--
+                <ng-container *ngFor="let imagenPromocion of imagenesPromocion; let i = index">
+                    <div class="col-lg-3 col-md-6" data-toggle="modal" [attr.data-target]="'#modalCenter_'+imagenPromocion.id">
+                        <div class="member">
+                            <div class="pic">
+                                <img [src]="imagenPromocion.img" alt="">
+                            </div>
+                            <h4>{{ imagenPromocion.titulo }}</h4>
+                            <span>{{ imagenPromocion.descripcionCorta }}</span>
+                        </div>
+                    </div>
+                </ng-container>
+                -->
+            </div>
+        </div>
+
+        <!-- Blog Modal  -->
+        <!--
+        <ng-container *ngFor="let imagenModalPromocion of imagenesPromocion; let i = index">
+            <div class="modal fade" [id]="'modalCenter_'+imagenModalPromocion.id" tabindex="-1" role="dialog" aria-labelledby="modalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="section-title">{{ imagenModalPromocion.titulo }}</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                        </div>
+                        <div class="modal-body">
+                            {{ imagenModalPromocion.descripcionLarga }}
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btnClose" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+        -->
+    </section>
+    <!-- #blog -->
+
+
+    <!--==========================
+      Blog Section
+    ============================-->
+    <section id="faq">
+        <div class="container wow fadeInUp">
+            <div class="section-header">
+                <h3 class="section-title">FAQ</h3>
+                <p class="section-description"></p>
+            </div>
+            <div class="row">
+
+                <!--
+                <ng-container *ngFor="let imagenPromocion of imagenesPromocion; let i = index">
+                    <div class="col-lg-3 col-md-6" data-toggle="modal" [attr.data-target]="'#modalCenter_'+imagenPromocion.id">
+                        <div class="member">
+                            <div class="pic">
+                                <img [src]="imagenPromocion.img" alt="">
+                            </div>
+                            <h4>{{ imagenPromocion.titulo }}</h4>
+                            <span>{{ imagenPromocion.descripcionCorta }}</span>
+                        </div>
+                    </div>
+                </ng-container>
+                -->
+            </div>
+        </div>
+
+        <!-- faq Modal  -->
+        <!--
+        <ng-container *ngFor="let imagenModalPromocion of imagenesPromocion; let i = index">
+            <div class="modal fade" [id]="'modalCenter_'+imagenModalPromocion.id" tabindex="-1" role="dialog" aria-labelledby="modalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="section-title">{{ imagenModalPromocion.titulo }}</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                        </div>
+                        <div class="modal-body">
+                            {{ imagenModalPromocion.descripcionLarga }}
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btnClose" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+        -->
+    </section>
+    <!-- #faq -->
+
+
+    <!--==========================
+      Mi Cuenta Section
+    ============================-->
+    <section id="miCuenta">
+        <div class="container wow fadeInUp">
+            <div class="section-header">
+                <h3 class="section-title">Mi Cuenta</h3>
+                <p class="section-description"></p>
+            </div>
+            <div class="row">
+
+                <!--
+                <ng-container *ngFor="let imagenPromocion of imagenesPromocion; let i = index">
+                    <div class="col-lg-3 col-md-6" data-toggle="modal" [attr.data-target]="'#modalCenter_'+imagenPromocion.id">
+                        <div class="member">
+                            <div class="pic">
+                                <img [src]="imagenPromocion.img" alt="">
+                            </div>
+                            <h4>{{ imagenPromocion.titulo }}</h4>
+                            <span>{{ imagenPromocion.descripcionCorta }}</span>
+                        </div>
+                    </div>
+                </ng-container>
+                -->
+            </div>
+        </div>
+
+        <!-- Promotions Modal  -->
+        <!--
+        <ng-container *ngFor="let imagenModalPromocion of imagenesPromocion; let i = index">
+            <div class="modal fade" [id]="'modalCenter_'+imagenModalPromocion.id" tabindex="-1" role="dialog" aria-labelledby="modalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="section-title">{{ imagenModalPromocion.titulo }}</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                        </div>
+                        <div class="modal-body">
+                            {{ imagenModalPromocion.descripcionLarga }}
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btnClose" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+        -->
+    </section>
+    <!-- #promotions -->
+
+    <!--==========================
+      Contact Section
+    ============================-->
+    <section id="contact">
+        <div class="container wow fadeInUp">
+            <div class="section-header">
+                <h3 class="section-title">Contacto</h3>
+                <p class="section-description">&nbsp;</p>
+            </div>
+        </div>
+
+        <!-- Uncomment below if you wan to use dynamic maps -->
+        <!--
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3761.981957748982!2d-99.25798028526397!3d19.45634468687081!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d203be06c9c77d%3A0x221c00bfc9abb862!2sJorge%20Jim%C3%A9nez%20Cant%C3%BA%2017%2C%20Nueva%20San%20Rafael%2C%2053640%20Naucalpan%20de%20Ju%C3%A1rez%2C%20M%C3%A9x.!5e0!3m2!1ses!2smx!4v1623359355205!5m2!1ses!2smx"
+            width="100%" height="380" frameborder="0" style="border:0" allowfullscreen=""></iframe>
+        -->
+
+        <div class="container wow fadeInUp mt-5">
+            <div class="row justify-content-center">
+
+                <div class="col-lg-3 col-md-4">
+
+                    <div class="info">
+                        <div>
+                            &nbsp;
+                            <!--<i class="fa fa-map-marker"></i>
+                            <p>Marsella 56<br>Col. Juarez<br>Cuauhtemoc, CDMX</p>-->
+                        </div>
+
+                        <div>
+                            <i class="fa fa-envelope"></i>
+                            <p>hola@myloveforcbd.com</p>
+                        </div>
+
+                        <div>
+                            <i class="fa fa-phone"></i>
+                            <p>+52 55 48172143</p>
+                        </div>
+                    </div>
+
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/myloveforcbd/" target="_blank" class="foot-icon-bg-1"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/MyLoveForCBD" target="_blank" class="foot-icon-bg-2"><i class="fab fa-facebook-square"></i></a>
+                        <a href="https://www.tiktok.com/@myloveforcbd" target="_blank" class="foot-icon-bg-3"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://wa.me/525548172143/?text=Hola,%20estoy%20interesado/a%20en..." target="_blank" class="foot-icon-bg-4"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+
+                </div>
+
+                <div class="col-lg-5 col-md-8">
+                    <div class="form">
+                        <div id="sendmessage">Su mensaje ha sido enviado. ¡Gracias!</div>
+                        <div id="errormessage"></div>
+
+                        <form id="form" class="contactForm">
+                            <div class="form-group">
+                                <input type="text" name="from_name" id="from_name" class="form-control" placeholder="Tu nombre" data-rule="minlen:4" data-msg="Su nombre debe tener al menos 4 caracteres">
+                                <div class="validation"></div>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="from_email" id="from_email" class="form-control" placeholder="Tu email" data-rule="email" data-msg="Por favor ingresar un email valido">
+                                <div class="validation"></div>
+                            </div>
+                            <div class="form-group">
+                                <textarea type="text" name="message" id="message" class="form-control" rows="5" placeholder="Mensaje" data-rule="required" data-msg="Por favor escribenos algo"></textarea>
+                                <div class="validation"></div>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" id="button">Enviar mensaje</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+    <!-- #contact -->
+
+</main>
+
+<!--==========================
+    Footer
+  ============================-->
+<footer id="footer">
+    <div class="footer-top">
+        <div class="container">
+
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="copyright">
+            <a routerLink="/terminos">Terminos y Condiciones</a> / <a routerLink="/politica">Politica de privacidad</a>
+        </div>
+        <div class="copyright">
+            &copy; Copyright 2022, <strong>MY LOVE FOR CBD</strong>.
+        </div>
+    </div>
+</footer>
+<!-- #footer -->
+
+<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>

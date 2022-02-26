@@ -20,7 +20,7 @@
                     <div class="page-header">
                         <div class="page-title">
                             <ol class="breadcrumb text-right">
-                                <li><a href="#">Dashboard</a></li>
+                                <li><a routerLink="/dashboard">Dashboard</a></li>
                                 <li class="active">Pedidos</li>
                             </ol>
                         </div>
@@ -58,8 +58,8 @@
                                             <th scope="row">{{ pedido.cve_pedido}}</th>
                                             <td>{{ pedido.clientenombre + ' ' + pedido.clientepaterno + ' ' + pedido.clientematerno}}</td>
                                             <td>{{ pedido.telefono_contacto }}</td>
-                                            <td>{{ pedido.fecha_creacion }}</td>
-                                            <td>{{ pedido.total }}</td>
+                                            <td>{{ pedido.fecha_creacion | date:'medium' }}</td>
+                                            <td>{{ pedido.total | currency }}</td>
                                             <td>{{ pedido.pedidoestatus }}</td>
                                             <td class="text-center">
                                                 <a href="#" class="tooltip-test" title="Editar"><i class="ti-pencil-alt pull-right"></i></a>
@@ -83,3 +83,105 @@
     <!-- /# main -->
 </div>
 <!-- /# content wrap -->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="exampleModalLongTitle">Pedido nuevo</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="card alert">
+                    <div class="card-body">
+
+                        <div class="basic-form">
+                            <form>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Cliente</label>
+                                            <input type="text" class="form-control" placeholder="Cliente">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Teléfono contacto</label>
+                                            <input type="password" class="form-control" placeholder="Teléfono contacto">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Subtotal</label>
+                                            <input type="text" class="form-control" placeholder="Subtotal">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Descuento</label>
+                                            <input type="text" class="form-control" placeholder="Descuento">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>IVA</label>
+                                            <input type="text" class="form-control" placeholder="IVA">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Costo de envío</label>
+                                            <input type="text" class="form-control" placeholder="Costo de envío">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Total</label>
+                                            <input type="text" class="form-control" placeholder="Total">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Numero de Guia</label>
+                                            <input type="text" class="form-control" placeholder="Numero de Guia">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Estatus</label>
+                                            <input type="text" class="form-control" placeholder="Estatus">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group"></div>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>

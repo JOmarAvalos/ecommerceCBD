@@ -17,4 +17,10 @@ export class InventarioService {
     );
   }
 
+  obtener(id: number) {
+    return this.http.get(
+      `${ this.url }` + `?id=${ id }`
+    );
+  }
+  
 }

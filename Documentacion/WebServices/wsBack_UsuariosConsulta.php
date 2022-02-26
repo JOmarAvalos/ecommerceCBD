@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
   // Query verificacion
   $query = "SELECT usu.cve_usuario, usu.usuario, usu.nombre, usu.paterno, usu.materno, 
-                   usu.email, cpe.nombre as perfil, usu.ban_activo 
+                   usu.email, usu.id_perfil, cpe.nombre as perfil, usu.ban_activo 
               FROM cbddesarrollo.cbd_usuarios AS usu
               LEFT JOIN cbddesarrollo.cbd_cata_perfil AS cpe ON cpe.cve_perfil = usu.id_perfil ";
   if($id != "") {

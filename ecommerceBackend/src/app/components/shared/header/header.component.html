@@ -2,7 +2,7 @@
 <div class="header">
     <div class="pull-left">
         <div class="logo">
-            <a href="index.html">
+            <a routerLink="/dashboard">
                 <img id="logoImg" src="../../../assets/images/logo/logo_cbd_v3.png" data-logo_big="../../../assets/images/logo/logo_cbd_v3.png" data-logo_small="../../../assets/images/logo/logo_cbd_v3.png" alt="Logo_cbd" />
             </a>
         </div>
@@ -15,21 +15,10 @@
             <li class="header-icon dib">
                 <img class="avatar-img" src="assets/images/avatar/1.jpg" alt="" /> <span class="user-avatar">Nombre <i class="ti-angle-down f-s-10"></i></span>
                 <div class="drop-down dropdown-profile">
-                    <div class="dropdown-content-heading">
-                        <span class="text-left">Upgrade Now</span>
-                        <p class="trial-day">30 Days Trail</p>
-                    </div>
                     <div class="dropdown-content-body">
                         <ul>
-                            <li><a href="#"><i class="ti-user"></i> <span>Profile</span></a></li>
-                            <li><a href="#"><i class="ti-wallet"></i> <span>My Balance</span></a></li>
-                            <li><a href="#"><i class="ti-write"></i> <span>My Task</span></a></li>
-                            <li><a href="#"><i class="ti-calendar"></i> <span>My Calender</span></a></li>
-                            <li><a href="#"><i class="ti-email"></i> <span>Inbox</span></a></li>
-                            <li><a href="#"><i class="ti-settings"></i> <span>Setting</span></a></li>
-                            <li><a href="#"><i class="ti-help-alt"></i> <span>Help</span></a></li>
-                            <li><a href="#"><i class="ti-lock"></i> <span>Lock Screen</span></a></li>
-                            <li><a href="#"><i class="ti-power-off"></i> <span>Logout</span></a></li>
+                            <li><a routerLink="/mi-perfil"><i class="ti-user"></i> <span>Mi Perfil</span></a></li>
+                            <li><a routerLink="/login"><i class="ti-power-off"></i> <span>Cerrar sesión</span></a></li>
                         </ul>
                     </div>
                 </div>

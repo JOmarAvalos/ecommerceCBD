@@ -17,8 +17,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $id = $_GET['id'];
 
     // Query verificacion
-    $query = "SELECT may.cve_venta_mayoreo, may.nombre, may.email, may.mensaje, may.fch_creacion, may.fch_modificacion, may.id_usuario_modifica,
-                     may.ban_activo
+    $query = "SELECT may.cve_venta_mayoreo, may.nombre, may.email, may.mensaje, may.fch_creacion, 
+                     may.fch_modificacion, may.id_usuario_modifica, may.ban_activo
                 FROM cbddesarrollo.cbd_ventas_mayoreo AS may ";
     if($id != "") {
         $query .= " WHERE may.cve_venta_mayoreo = " . $id;

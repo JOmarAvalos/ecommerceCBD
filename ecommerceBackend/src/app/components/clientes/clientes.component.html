@@ -20,7 +20,7 @@
                     <div class="page-header">
                         <div class="page-title">
                             <ol class="breadcrumb text-right">
-                                <li><a href="#">Dashboard</a></li>
+                                <li><a routerLink="/dashboard">Dashboard</a></li>
                                 <li class="active">Clientes</li>
                             </ol>
                         </div>
@@ -36,7 +36,7 @@
                         <div class="card alert">
                             <div class="card-header">
                                 <h4>
-                                    <button type="button" class="btn btn-primary btn-flat btn-addon m-b-10 m-l-5" data-toggle="modal" data-target="#exampleModalCenter"><i class="ti-plus"></i>Nuevo</button>
+                                    <button type="button" (click)="nuevo()" class="btn btn-primary btn-flat btn-addon m-b-10 m-l-5" data-toggle="modal" data-target="#exampleModalCenter"><i class="ti-plus"></i>Nuevo</button>
                                 </h4>
                             </div>
                             <div class="card-body">
@@ -62,7 +62,7 @@
                                                 <ng-template [ngIf]="cliente.ban_activo == '0'"><span class="badge badge-danger">Inactivo</span></ng-template>
                                             </td>
                                             <td class="text-center">
-                                                <a href="" class="tooltip-test" title="Editar" (click)="onEdit(cliente.cve_cliente)"><i class="ti-pencil-alt pull-right"></i></a>
+                                                <a (click)="editar( cliente.cve_cliente )" class="tooltip-test" title="Editar" data-toggle="modal" data-target="#exampleModalCenter"><i class="ti-pencil-alt pull-center"></i></a>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -82,3 +82,155 @@
     <!-- /# main -->
 </div>
 <!-- /# content wrap -->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="exampleModalLongTitle">Cliente</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="card alert">
+                    <div class="card-body">
+                        <div class="basic-form">
+
+
+                            <form autocomplete="off" [formGroup]="forma" (ngSubmit)="guardar()">
+                                <input type="hidden" formControlName="id">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group" [class.has-error]="nombreNoValido">
+                                            <label>Nombre</label>
+                                            <input type="text" class="form-control" placeholder="Nombre" formControlName="nombre">
+                                            <small *ngIf="nombreNoValido" class="text-danger">Ingrese nombre</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group" [class.has-error]="paternoNoValido">
+                                            <label>Paterno</label>
+                                            <input type="text" class="form-control" placeholder="Paterno" formControlName="paterno">
+                                            <small *ngIf="paternoNoValido" class="text-danger">Ingrese paterno</small>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Materno</label>
+                                            <input type="text" class="form-control" placeholder="Materno" formControlName="materno">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group" [class.has-error]="emailNoValido">
+                                            <label>Email</label>
+                                            <input type="text" class="form-control" placeholder="Email" formControlName="email">
+                                            <small *ngIf="emailNoValido" class="text-danger">Ingrese email valido</small>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group" [class.has-error]="contrasenaNoValido">
+                                            <label>Contraseña</label>
+                                            <input type="password" class="form-control" placeholder="Contraseña" formControlName="contrasena">
+                                            <small *ngIf="contrasenaNoValido" class="text-danger">Ingrese al menos 8 caracteres</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group" [class.has-error]="telefonoNoValido">
+                                            <label>Teléfono</label>
+                                            <input type="text" class="form-control" placeholder="Teléfono" formControlName="telefono">
+                                            <small *ngIf="telefonoNoValido" class="text-danger">Ingrese teléfono</small>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group" [class.has-error]="fchNacimientoNoValido">
+                                            <label>Fecha de nacimiento</label>
+                                            <input type="date" class="form-control" formControlName="fchnacimiento">
+                                            <small *ngIf="fchNacimientoNoValido" class="text-danger">Ingrese fecha de nacimiento</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group" [class.has-error]="generoNoValido">
+                                            <label>Genero</label>
+                                            <select class="form-control" formControlName="genero">
+                                                <option value=""></option>
+                                                <option *ngFor="let genero of generos" [value]="genero.cve_genero">{{ genero.nombre }}</option>
+                                            </select>
+                                            <small *ngIf="generoNoValido" class="text-danger">Ingrese genero</small>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group" [class.has-error]="ubicacionNoValido">
+                                            <label>Ubicación</label>
+                                            <select class="form-control" formControlName="ubicacion">
+                                                <option value=""></option>
+                                                <option *ngFor="let ubicacion of ubicaciones" [value]="ubicacion.cve_ubicacion">{{ ubicacion.estado }}</option>
+                                            </select>
+                                            <small *ngIf="ubicacionNoValido" class="text-danger">Ingrese fecha de nacimiento</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group" [class.has-error]="tipoNoValido">
+                                            <label>Tipo</label>
+                                            <select class="form-control" formControlName="tipo">
+                                                <option value=""></option>
+                                                <option *ngFor="let tipo of clienteTipos" [value]="tipo.cve_tipo_cliente">{{ tipo.nombre }}</option>
+                                            </select>
+                                            <small *ngIf="tipoNoValido" class="text-danger">Ingrese tipo</small>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group" [class.has-error]="estatusNoValido">
+                                            <label>Estatus</label>
+                                            <select class="form-control" formControlName="estatus">
+                                                    <option value="1">Activo</option>
+                                                    <option value="0">Inactivo</option>
+                                                </select>
+                                            <small *ngIf="estatusNoValido" class="text-danger">Ingrese estatus</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6"></div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="modal-footer">
+                                            <div class="form-group fa-pull-right">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                                <button type="submit" class="btn btn-primary">Guardar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div *ngIf="mensajeError" class="alert alert-danger alert-dismissable">
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                    <strong>¡Atencion!</strong> {{ respuesta.message }}.
+                                </div>
+                            </form>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -151,8 +151,8 @@ jQuery(document).ready(function($) {
     document.getElementById('form').addEventListener('submit', function(event) {
         event.preventDefault();
 
-        var serviceID = 'gmail_demo';
-        var templateID = 'template_m7nah1b';
+        var serviceID = 'service_k6h6dk8';
+        var templateID = 'template_mf3lkjj';
 
         var name = $("#from_name").val();
         var email = $("#from_email").val();
