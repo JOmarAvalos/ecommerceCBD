@@ -13,11 +13,16 @@ header("Allow: GET, POST, OPTIONS, PUT, DELETE");
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
+  // Variables de entrada
+  $estatus = $_GET['estatus'];
+
   // Query verificacion
   $query = "SELECT ubi.cve_ubicacion, ubi.estado, ubi.ban_activo 
               FROM cbddesarrollo.cbd_cata_ubicacion AS ubi 
-             WHERE ubi.pais = 'México'
-               AND ubi.ban_activo = 1 ";
+             WHERE ubi.pais = 'México' ";
+  if($estatus != "") {
+    $query .= " AND ubi.ban_activo = " . $estatus;
+  }
 
   $result = pg_query($query);
   $numFilas = pg_num_rows($result);

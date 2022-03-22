@@ -1,1 +1,84 @@
-<p>tienda works!</p>
+<!--==========================
+  Header fijo
+  ============================-->
+  <header id="headerfijo">
+    <div class="container">
+
+        <div id="logo" class="pull-left">
+            <a href="#home">
+                <img src="../../../assets/img/logo/mylove.png" class="img-responsive" alt="MyLoveCBD Logo">
+            </a>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <nav id="nav-menu-container">
+            <ul class="nav-menu">
+                <li class="menu-active"><a href="#home">Inicio</a></li>
+                <li><a href="#about">Nosotros</a></li>
+                <li><a href="#products">Tienda</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#">Mi Cuenta</a></li>
+                <li><a href="#contact">Venta al mayoreo</a></li>
+            </ul>
+        </nav>
+        <!-- #nav-menu-container -->
+    </div>
+</header>
+<!-- #header -->
+
+<main id="main">
+
+<!--==========================
+      Tienda Clasificacion Section
+    ============================-->
+    <section id="tienda_clasificacion">
+        <div class="container wow fadeInUp">
+            <div class="section-header" *ngFor="let cat of categoria">
+                <h3 class="section-title">Tienda</h3>
+                <p class="section-description">{{ cat.nombre }}</p>
+            </div>
+
+            <div class="row" id="tienda_clasificacion-wrapper">
+
+
+
+                <div class="col-lg-3 col-md-6 tienda_clasificacion-item" *ngFor="let articulo of articulos">
+                    <a href="">
+                        <img src="../../../assets/img/tienda/Articulo_1.jpg" alt="{{ articulo.nombre }}">
+                        <div class="details">
+                            <h4>{{ articulo.nombre }}</h4>
+                            <span>{{ articulo.descripcion_corta }}</span>
+                        </div>
+                    </a>
+                </div>
+    
+                
+            </div>
+        </div>
+    </section><!-- #tienda_clasificacion -->
+
+</main>
+
+<!--==========================
+    Footer
+  ============================-->
+  <footer id="footer">
+    <div class="footer-top">
+        <div class="container">
+
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="copyright">
+            <a routerLink="/terminos">Terminos y Condiciones</a> / <a routerLink="/politica">Politica de privacidad</a>
+        </div>
+        <div class="copyright">
+            &copy; Copyright 2022, <strong>MY LOVE FOR CBD</strong>.
+        </div>
+    </div>
+</footer>
+<!-- #footer -->

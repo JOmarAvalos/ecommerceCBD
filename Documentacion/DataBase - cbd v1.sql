@@ -1,4 +1,4 @@
--- DataBase: disofgis
+-- DataBase: disofgis_cbd
 -- Schema: 
     -- cbddesarrollo
     -- cbdproduccion
@@ -453,16 +453,34 @@ INSERT INTO cbddesarrollo.cbd_cata_subcategoria_articulo (nombre, ban_activo) VA
 INSERT INTO cbddesarrollo.cbd_cata_subcategoria_articulo (nombre, ban_activo) VALUES ('Baterías', 1);
 INSERT INTO cbddesarrollo.cbd_cata_subcategoria_articulo (nombre, ban_activo) VALUES ('Cartuchos', 1);
 INSERT INTO cbddesarrollo.cbd_cata_subcategoria_articulo (nombre, ban_activo) VALUES ('Energia', 1);
-
 INSERT INTO cbddesarrollo.cbd_cata_subcategoria_articulo (nombre, ban_activo) VALUES ('Fórmula nocturna', 1);
 INSERT INTO cbddesarrollo.cbd_cata_subcategoria_articulo (nombre, ban_activo) VALUES ('Gatos', 1);
 INSERT INTO cbddesarrollo.cbd_cata_subcategoria_articulo (nombre, ban_activo) VALUES ('Multivitamínico', 1);
 INSERT INTO cbddesarrollo.cbd_cata_subcategoria_articulo (nombre, ban_activo) VALUES ('Oso', 1);
 INSERT INTO cbddesarrollo.cbd_cata_subcategoria_articulo (nombre, ban_activo) VALUES ('Para dormir', 1);
-
 INSERT INTO cbddesarrollo.cbd_cata_subcategoria_articulo (nombre, ban_activo) VALUES ('Perros', 1);
 INSERT INTO cbddesarrollo.cbd_cata_subcategoria_articulo (nombre, ban_activo) VALUES ('Veganas', 1);
 
+---------------------------------------
+-- cbddesarrollo.cbd_cata_marcas
+---------------------------------------
+
+create table cbddesarrollo.cbd_cata_marcas
+(
+  cve_marca serial NOT NULL,
+  nombre character varying(50) NOT NULL,
+  ban_activo integer NOT NULL,
+
+  CONSTRAINT cbd_cata_marca_pkey PRIMARY KEY (cve_marca)
+);
+
+INSERT INTO cbddesarrollo.cbd_cata_marcas (nombre, ban_activo) VALUES ('JustCBD', 1);
+INSERT INTO cbddesarrollo.cbd_cata_marcas (nombre, ban_activo) VALUES ('GreatFul', 1);
+INSERT INTO cbddesarrollo.cbd_cata_marcas (nombre, ban_activo) VALUES ('CBDbies', 1);
+INSERT INTO cbddesarrollo.cbd_cata_marcas (nombre, ban_activo) VALUES ('TJGreens', 1);
+INSERT INTO cbddesarrollo.cbd_cata_marcas (nombre, ban_activo) VALUES ('HempMeds', 1);
+INSERT INTO cbddesarrollo.cbd_cata_marcas (nombre, ban_activo) VALUES ('CBDLife', 1);
+INSERT INTO cbddesarrollo.cbd_cata_marcas (nombre, ban_activo) VALUES ('HighHemp', 1);
 
 ---------------------------------------
 -- cbddesarrollo.cbd_articulos
@@ -471,7 +489,7 @@ INSERT INTO cbddesarrollo.cbd_cata_subcategoria_articulo (nombre, ban_activo) VA
 create table cbddesarrollo.cbd_articulos
 (
   cve_articulo serial NOT NULL,
-  marca character varying(100) NOT NULL,
+  id_marca integer NOT NULL,
   sku character varying(20) NOT NULL,
   nombre character varying(100) NOT NULL,
   id_categoria_articulo integer NOT NULL,
@@ -492,6 +510,10 @@ create table cbddesarrollo.cbd_articulos
   ban_activo integer NOT NULL,
 
   CONSTRAINT cbd_articulos_pkey PRIMARY KEY (cve_articulo),
+
+  CONSTRAINT fkey_cbd_articulos_cbd_cata_marcas_id FOREIGN KEY (id_marca)
+      REFERENCES cbddesarrollo.cbd_cata_marcas (cve_marca) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION,
 
   CONSTRAINT fkey_cbd_articulos_cbd_cata_categoria_articulo_id FOREIGN KEY (id_categoria_articulo)
       REFERENCES cbddesarrollo.cbd_cata_categoria_articulo (cve_categoria_articulo) MATCH SIMPLE
@@ -561,7 +583,7 @@ create table cbddesarrollo.cbd_articulo_fotografias
 create table cbddesarrollo.cbd_articulos_historico
 (
   cve_articulo integer,
-  marca character varying(100),
+  id_marca integer,
   sku character varying(20),
   nombre character varying(100),
   id_categoria_articulo integer,
@@ -649,4 +671,26 @@ create table cbddesarrollo.cbd_ventas_mayoreo
 
   CONSTRAINT cbd_ventas_mayoreo_pkey PRIMARY KEY (cve_venta_mayoreo)
 );
+
+---------------------------------------
+-- cbddesarrollo.cbd_ventas_mayoreo_seguimiento
+---------------------------------------
+
+create table cbddesarrollo.cbd_ventas_mayoreo_seguimiento
+(
+  cve_venta_mayoreo_seguimiento serial NOT NULL,
+  id_venta_mayoreo integer NOT NULL,
+  mensaje character varying(1000) NOT NULL,
+  id_usuario_crea integer NOT NULL,
+  fch_creacion timestamp without time zone  NOT NULL,
+
+  CONSTRAINT cve_venta_mayoreo_seguimiento_pkey PRIMARY KEY (cve_venta_mayoreo_seguimiento),
+
+  CONSTRAINT fkey_cbd_ventas_mayoreo_seguimiento_cbd_ventas_mayoreo_id FOREIGN KEY (id_venta_mayoreo)
+      REFERENCES cbddesarrollo.cbd_ventas_mayoreo (cve_venta_mayoreo) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+);
+
+
+
 

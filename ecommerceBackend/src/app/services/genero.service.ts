@@ -17,4 +17,10 @@ export class GeneroService {
     );
   }
 
+  obtenerActivos() {
+    return this.http.get(
+      `${ this.url }` + `?estatus=1`
+    );
+  }
+
 }

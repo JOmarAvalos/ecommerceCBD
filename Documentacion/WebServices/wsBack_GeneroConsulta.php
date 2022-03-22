@@ -13,10 +13,15 @@ header("Allow: GET, POST, OPTIONS, PUT, DELETE");
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
+  // Variables de entrada
+  $estatus = $_GET['estatus'];
+
   // Query verificacion
   $query = "SELECT gen.cve_genero, gen.nombre, gen.ban_activo 
-              FROM cbddesarrollo.cbd_cata_genero AS gen 
-             WHERE gen.ban_activo = 1 ";
+              FROM cbddesarrollo.cbd_cata_genero AS gen ";
+  if($estatus != "") {
+    $query .= " WHERE gen.ban_activo = " . $estatus;
+  }
 
   $result = pg_query($query);
   $numFilas = pg_num_rows($result);

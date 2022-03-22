@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { MayoreoService } from '../../services/mayoreo.service';
 import { ScriptLoaderService } from '../../script-loader.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -21,19 +23,35 @@ export class MayoreoComponent implements OnInit {
   respuesta: any = [];
   mensajeError: boolean = false;
 
+  // Parametros Paginacion.
+  currentPage: number = 1;
+  itemsPerPage: number = 10;
+  previousLabel: string = 'Anterior';
+  nextLabel: string = 'Siguiente';
+  responsive: boolean = true;
+  
+
   constructor( private mayoreoService: MayoreoService, 
                private http: HttpClient, 
                private scriptLoader: ScriptLoaderService,
-               private fb: FormBuilder) {
+               private fb: FormBuilder,
+               private router: Router) {
 
     this.crearFormulario();
 
+    // Loading icon
+    Swal.fire({
+      allowOutsideClick: false,
+      text: 'Espere por favor...'
+    });
+    Swal.showLoading();
 
     // Mayoreos
     this.mayoreoService.obtenerTodos()
       .subscribe( (resp: any) => {
         this.mayoreo = resp;
-        console.log(resp);
+        Swal.close();
+        // console.log(resp);
       });
   }
 
@@ -79,7 +97,7 @@ export class MayoreoComponent implements OnInit {
 
       this.mayoreoService.registrar( this.forma.value )
       .subscribe( (resp: any) => {
-        console.log(resp);
+        //console.log(resp);
         this.respuesta = resp;
 
         if (this.respuesta.success == 1) {
@@ -128,6 +146,11 @@ export class MayoreoComponent implements OnInit {
 
       }
     );
+  }
+
+
+  seguimiento( id: number ) {
+    this.router.navigate( ['/mayoreo-seguimiento', id] );
   }
 
 

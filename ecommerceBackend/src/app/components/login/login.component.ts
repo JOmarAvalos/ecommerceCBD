@@ -33,21 +33,21 @@ export class LoginComponent implements OnInit {
 
     if ( form.invalid ) { return; }
 
-    Swal.fire({ 
+    Swal.fire({
       allowOutsideClick: false,
       icon: 'info',
       text: 'Espere por favor...'
     });
     Swal.showLoading();
-    
+
     this.login.login( this.usuario )
       .subscribe( resp => {
 
-        console.log(resp)
+        // console.log(resp)
         this.respuesta = resp;
-        
+
         if (this.respuesta.success == 1) {
-          
+
           Swal.close();
 
           /*if ( this.recordarUsuario ) {
@@ -60,7 +60,7 @@ export class LoginComponent implements OnInit {
             icon: 'error',
             title: 'Error al autenticar',
             text: this.respuesta.message
-          })
+          });
         }
       });
 

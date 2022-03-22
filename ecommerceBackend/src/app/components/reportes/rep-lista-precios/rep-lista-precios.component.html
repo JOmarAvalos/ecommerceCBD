@@ -1,0 +1,91 @@
+<!-- Menu -->
+<app-menu></app-menu>
+
+<!-- Header -->
+<app-header></app-header>
+
+<div class="content-wrap">
+    <div class="main">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-8 p-0">
+                    <div class="page-header">
+                        <div class="page-title">
+                            <h1>Reportes</h1>
+                        </div>
+                    </div>
+                </div>
+                <!-- /# column -->
+                <div class="col-lg-4 p-0">
+                    <div class="page-header">
+                        <div class="page-title">
+                            <ol class="breadcrumb text-right">
+                                <li><a routerLink="/dashboard">Dashboard</a></li>
+                                <li><a routerLink="/reportes">Reportes</a></li>
+                                <li class="active">Lista Precios</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                <!-- /# column -->
+            </div>
+            <!-- /# row -->
+            <div class="main-content">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card alert">
+                            <div class="card-header">
+                                <h4>Lista Precios</h4>
+                                <hr>
+                                <h4>
+                                    <button type="button" (click)="exportAsXLSX()" class="btn btn-primary btn-flat btn-addon m-b-10 m-l-5" data-toggle="modal" data-target="#articuloMarcaModalCenter"><i class="ti-download"></i>XLSX</button> &nbsp;&nbsp;
+                                    <button type="button" (click)="exportAsPDF()" class="btn btn-primary btn-flat btn-addon m-b-10 m-l-5" data-toggle="modal" data-target="#articuloMarcaModalCenter"><i class="ti-download"></i>PDF</button>
+                                </h4>
+                            </div>
+                            <div class="card-body" id="htmlData">
+                                <table class="table table-responsive table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center">SKU</th>
+                                            <th class="text-center">Categoria</th>
+                                            <th class="text-center">Descripción</th>
+                                            <th class="text-center">Presentación</th>
+                                            <th class="text-center">Precio</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <tr *ngFor="let precioLista of preciosLista | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }">
+                                            <td class="text-center">{{ precioLista.sku}}</td>
+                                            <td class="text-center">{{ precioLista.categoria}}</td>
+                                            <td>{{ precioLista.descripcion_corta}}</td>
+                                            <td class="text-center">{{ precioLista.presentacion}}</td>
+                                            <td class="text-center">{{ precioLista.precio | currency }}</td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+
+                                <!-- Control de paginador-->
+                                <div class="page-header">
+                                    <div class="page-title">
+                                        <div class="breadcrumb text-right">
+                                            <pagination-controls [responsive]="responsive" [previousLabel]="previousLabel" [nextLabel]="nextLabel" (pageChange)="currentPage = $event"></pagination-controls>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /# card -->
+                    </div>
+                    <!-- /# column -->
+                </div>
+                <!-- /# row -->
+            </div>
+            <!-- /# main content -->
+        </div>
+        <!-- /# container-fluid -->
+    </div>
+    <!-- /# main -->
+</div>
+<!-- /# content wrap -->

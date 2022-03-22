@@ -36,37 +36,46 @@
                         <div class="card alert">
                             <div class="card-header">
                                 <h4>
-                                    <button type="button" (click)="nuevo()" class="btn btn-primary btn-flat btn-addon m-b-10 m-l-5" data-toggle="modal" data-target="#exampleModalCenter"><i class="ti-plus"></i>Nuevo</button>
+                                    <button type="button" (click)="nuevo()" class="btn btn-primary btn-flat btn-addon m-b-10 m-l-5" data-toggle="modal" data-target="#clientesModalCenter"><i class="ti-plus"></i>Nuevo</button>
                                 </h4>
                             </div>
                             <div class="card-body">
                                 <table class="table table-responsive table-striped">
                                     <thead>
                                         <tr>
-                                            <th>#ID</th>
+                                            <th class="text-center">#ID</th>
                                             <th>Nombre</th>
                                             <th>Email</th>
-                                            <th>Tipo cliente</th>
-                                            <th>Estatus</th>
-                                            <th>Acciones</th>
+                                            <th class="text-center">Tipo cliente</th>
+                                            <th class="text-center">Estatus</th>
+                                            <th class="text-center">Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr *ngFor="let cliente of clientes">
-                                            <th scope="row">{{ cliente.cve_cliente}}</th>
+                                        <tr *ngFor="let cliente of clientes | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }">
+                                            <th class="text-center" scope="row">{{ cliente.cve_cliente}}</th>
                                             <td>{{ cliente.nombre + ' ' + cliente.paterno + ' ' + cliente.materno}}</td>
                                             <td>{{ cliente.email }}</td>
-                                            <td class="color-primary">{{ cliente.tipocliente }}</td>
-                                            <td>
+                                            <td class="text-center">{{ cliente.tipocliente }}</td>
+                                            <td class="text-center">
                                                 <ng-template [ngIf]="cliente.ban_activo == '1'"><span class="badge badge-primary">Activo</span></ng-template>
                                                 <ng-template [ngIf]="cliente.ban_activo == '0'"><span class="badge badge-danger">Inactivo</span></ng-template>
                                             </td>
                                             <td class="text-center">
-                                                <a (click)="editar( cliente.cve_cliente )" class="tooltip-test" title="Editar" data-toggle="modal" data-target="#exampleModalCenter"><i class="ti-pencil-alt pull-center"></i></a>
+                                                <a (click)="editar( cliente.cve_cliente )" class="tooltip-test" title="Editar" data-toggle="modal" data-target="#clientesModalCenter"><i class="ti-pencil-alt pull-center"></i></a>
                                             </td>
                                         </tr>
                                     </tbody>
                                 </table>
+
+                                <!-- Control de paginador-->
+                                <div class="page-header">
+                                    <div class="page-title">
+                                        <div class="breadcrumb text-right">
+                                            <pagination-controls [responsive]="responsive" [previousLabel]="previousLabel" [nextLabel]="nextLabel" (pageChange)="currentPage = $event"></pagination-controls>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -84,7 +93,7 @@
 <!-- /# content wrap -->
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="clientesModalCenter" tabindex="-1" role="dialog" aria-labelledby="clientesModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">

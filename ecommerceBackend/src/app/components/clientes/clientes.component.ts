@@ -6,6 +6,7 @@ import { UbicacionService } from '../../services/ubicacion.service';
 import { ClienteTipoService } from '../../services/cliente-tipo.service';
 import { ScriptLoaderService } from '../../script-loader.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -27,8 +28,15 @@ export class ClientesComponent implements OnInit {
   respuesta: any = [];
   mensajeError: boolean = false;
 
-  constructor( private clientesService: ClientesService, 
-               private http: HttpClient, 
+  // Parametros Paginacion.
+  currentPage: number = 1;
+  itemsPerPage: number = 10;
+  previousLabel: string = 'Anterior';
+  nextLabel: string = 'Siguiente';
+  responsive: boolean = true;
+
+  constructor( private clientesService: ClientesService,
+               private http: HttpClient,
                private scriptLoader: ScriptLoaderService,
                private generoService: GeneroService,
                private ubicacionService: UbicacionService,
@@ -37,28 +45,36 @@ export class ClientesComponent implements OnInit {
 
     this.crearFormulario();
 
+    // Loading icon
+    Swal.fire({
+      allowOutsideClick: false,
+      text: 'Espere por favor...'
+    });
+    Swal.showLoading();
+
     this.clientesService.obtenerTodos()
       .subscribe( (resp: any) => {
         this.clientes = resp;
-        /*console.log(resp);*/
+        Swal.close();
+        // console.log(resp);
       });
 
     // Genero
-    this.generoService.obtenerTodos()
+    this.generoService.obtenerActivos()
       .subscribe( (resp: any) => {
         this.generos = resp;
         // console.log(resp);
       });
 
     // Ubicacion
-    this.ubicacionService.obtenerTodos()
+    this.ubicacionService.obtenerActivos()
       .subscribe( (resp: any) => {
         this.ubicaciones = resp;
         // console.log(resp);
       });
 
     // Cliente tipo
-    this.clienteTipoService.obtenerTodos()
+    this.clienteTipoService.obtenerActivos()
       .subscribe( (resp: any) => {
         this.clienteTipos = resp;
         // console.log(resp);

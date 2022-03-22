@@ -14,6 +14,14 @@ export class PedidosComponent implements OnInit {
 
   pedidos: any = [];
 
+  // Parametros Paginacion.
+  currentPage: number = 1;
+  itemsPerPage: number = 10;
+  previousLabel: string = 'Anterior';
+  nextLabel: string = 'Siguiente';
+  responsive: boolean = true;
+  
+
   constructor( private pedidosService: PedidosService, private http: HttpClient, private scriptLoader: ScriptLoaderService ) {
 
     this.pedidosService.obtenerTodos() 

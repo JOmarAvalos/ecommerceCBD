@@ -36,43 +36,52 @@
                         <div class="card alert">
                             <div class="card-header">
                                 <h4>
-                                    <button type="button" class="btn btn-primary btn-flat btn-addon m-b-10 m-l-5" data-toggle="modal" data-target="#exampleModalCenter"><i class="ti-plus"></i>Nuevo</button>
+                                    <button type="button" (click)="nuevo()" class="btn btn-primary btn-flat btn-addon m-b-10 m-l-5" data-toggle="modal" data-target="#inventarioModalCenter"><i class="ti-plus"></i>Nuevo</button>
                                 </h4>
                             </div>
                             <div class="card-body">
                                 <table id="example" class="table table-responsive table-striped">
                                     <thead>
                                         <tr>
-                                            <th>#ID</th>
-                                            <th>Marca</th>
-                                            <th>SKU</th>
-                                            <th>Nombre</th>
-                                            <th>Categoria</th>
-                                            <th>Precio</th>
-                                            <th>Estatus</th>
-                                            <th>Acciones</th>
+                                            <th class="text-center">#ID</th>
+                                            <th class="text-center">Marca</th>
+                                            <th class="text-center">SKU</th>
+                                            <th class="text-center">Nombre</th>
+                                            <th class="text-center">Categoria</th>
+                                            <th class="text-center">Precio</th>
+                                            <th class="text-center">Estatus</th>
+                                            <th class="text-center">Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody>
 
-                                        <tr *ngFor="let articulo of inventario">
-                                            <th scope="row">{{ articulo.cve_articulo}}</th>
-                                            <td>{{ articulo.marca}}</td>
-                                            <td>{{ articulo.sku}}</td>
+                                        <tr *ngFor="let articulo of inventario | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }">
+                                            <th class="text-center" scope="row">{{ articulo.cve_articulo}}</th>
+                                            <td class="text-center">{{ articulo.marca}}</td>
+                                            <td class="text-center">{{ articulo.sku}}</td>
                                             <td>{{ articulo.nombre}}</td>
-                                            <td>{{ articulo.categoria }}</td>
-                                            <td>{{ articulo.precio }}</td>
-                                            <td>
+                                            <td class="text-center">{{ articulo.categoria }}</td>
+                                            <td class="text-center">{{ articulo.precio | currency }}</td>
+                                            <td class="text-center">
                                                 <ng-template [ngIf]="articulo.ban_activo == '1'"><span class="badge badge-primary">Activo</span></ng-template>
                                                 <ng-template [ngIf]="articulo.ban_activo == '0'"><span class="badge badge-danger">Inactivo</span></ng-template>
                                             </td>
                                             <td class="text-center">
-                                                <a href="#" class="tooltip-test" title="Editar"><i class="ti-pencil-alt pull-right"></i></a>
+                                                <a (click)="editar( articulo.cve_articulo )" class="tooltip-test" title="Editar" data-toggle="modal" data-target="#inventarioModalCenter"><i class="ti-pencil-alt pull-center"></i></a>
                                             </td>
                                         </tr>
 
                                     </tbody>
                                 </table>
+
+                                <!-- Control de paginador-->
+                                <div class="page-header">
+                                    <div class="page-title">
+                                        <div class="breadcrumb text-right">
+                                            <pagination-controls [responsive]="responsive" [previousLabel]="previousLabel" [nextLabel]="nextLabel" (pageChange)="currentPage = $event"></pagination-controls>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -90,47 +99,68 @@
 <!-- /# content wrap -->
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="inventarioModalCenter" tabindex="-1" role="dialog" aria-labelledby="inventarioModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title" id="exampleModalLongTitle">Artículo nuevo</h4>
+                <h4 class="modal-title" id="exampleModalLongTitle">Artículo</h4>
             </div>
             <div class="modal-body">
 
                 <div class="card alert">
                     <div class="card-body">
-
                         <div class="basic-form">
-                            <form>
+
+
+                            <form autocomplete="off" [formGroup]="forma" (ngSubmit)="guardar()">
+                                <input type="hidden" formControlName="id">
                                 <div class="row">
                                     <div class="col-lg-6">
-                                        <div class="form-group">
+
+
+                                        <div class="form-group" [class.has-error]="marcaNoValido">
                                             <label>Marca</label>
-                                            <input type="text" class="form-control" placeholder="Marca">
+
+                                            <select class="form-control" formControlName="marca">
+                                                <option value=""></option>
+                                                <option *ngFor="let marca of marcas" [value]="marca.cve_marca">{{ marca.nombre }}</option>
+                                            </select>
+
+
+                                            <small *ngIf="marcaNoValido" class="text-danger">Ingrese marca</small>
                                         </div>
+
+
+
+
                                     </div>
                                     <div class="col-lg-6">
-                                        <div class="form-group">
+                                        <div class="form-group" [class.has-error]="skuNoValido">
                                             <label>SKU</label>
-                                            <input type="password" class="form-control" placeholder="SKU">
+                                            <input type="text" class="form-control" placeholder="SKU" formControlName="sku">
+                                            <small *ngIf="skuNoValido" class="text-danger">Ingrese SKU</small>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-6">
-                                        <div class="form-group">
+                                        <div class="form-group" [class.has-error]="nombreNoValido">
                                             <label>Nombre</label>
-                                            <input type="text" class="form-control" placeholder="Nombre">
+                                            <input type="text" class="form-control" placeholder="Nombre" formControlName="nombre">
+                                            <small *ngIf="nombreNoValido" class="text-danger">Ingrese nombre</small>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
-                                        <div class="form-group">
+                                        <div class="form-group" [class.has-error]="categoriaNoValido">
                                             <label>Categoria</label>
-                                            <input type="text" class="form-control" placeholder="Categoria">
+                                            <select class="form-control" formControlName="categoria">
+                                                <option value=""></option>
+                                                <option *ngFor="let categoria of categorias" [value]="categoria.cve_categoria_articulo">{{ categoria.nombre }}</option>
+                                            </select>
+                                            <small *ngIf="categoriaNoValido" class="text-danger">Ingrese categoria</small>
                                         </div>
                                     </div>
                                 </div>
@@ -139,13 +169,16 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Subcategoria</label>
-                                            <input type="text" class="form-control" placeholder="Subcategoria">
+                                            <select class="form-control" formControlName="subcategoria">
+                                                <option value=""></option>
+                                                <option *ngFor="let subcategoria of subcategorias" [value]="subcategoria.cve_subcategoria_articulo">{{ subcategoria.nombre }}</option>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label>Concentracion</label>
-                                            <input type="text" class="form-control" placeholder="Concentracion">
+                                            <label>Concentración</label>
+                                            <input type="text" class="form-control" placeholder="Concentración" formControlName="concentracion">
                                         </div>
                                     </div>
                                 </div>
@@ -154,67 +187,99 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Presentacion</label>
-                                            <input type="text" class="form-control" placeholder="Presentacion">
+                                            <input type="text" class="form-control" placeholder="Presentacion" formControlName="presentacion">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Sabor</label>
-                                            <input type="text" class="form-control" placeholder="Sabor">
+                                            <input type="text" class="form-control" placeholder="Sabor" formControlName="sabor">
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="form-group">
+                                    <div class="col-lg-12">
+                                        <div class="form-group" [class.has-error]="descripcionCortaNoValido">
                                             <label>Descripción corta</label>
-                                            <input type="text" class="form-control" placeholder="Descripción corta">
+                                            <input type="text" class="form-control" placeholder="Descripción corta" formControlName="descripcioncorta">
+                                            <small *ngIf="descripcionCortaNoValido" class="text-danger">Ingrese descripcion corta</small>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
-                                        <div class="form-group">
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="form-group" [class.has-error]="descripcionLargaNoValido">
                                             <label>Descripción larga</label>
-                                            <input type="text" class="form-control" placeholder="Descripción larga">
+                                            <textarea type="text" class="form-control" rows="5" formControlName="descripcionlarga"></textarea>
+                                            <small *ngIf="descripcionLargaNoValido" class="text-danger">Ingrese descripcion larga</small>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="row">
                                     <div class="col-lg-6">
-                                        <div class="form-group">
+                                        <div class="form-group" [class.has-error]="precioNoValido">
                                             <label>Precio</label>
-                                            <input type="text" class="form-control" placeholder="Precio">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">$</span>
+                                                <input type="number" class="form-control" min="0" max="100000" step="0.01" placeholder="0.00" formControlName="precio">
+                                            </div>
+                                            <small *ngIf="precioNoValido" class="text-danger">Ingrese precio</small>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Precio con descuento</label>
-                                            <input type="text" class="form-control" placeholder="Precio con descuento">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">$</span>
+                                                <input type="number" class="form-control" min="0" max="100000" step="0.01" placeholder="0.00" formControlName="preciocondescuento">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="row">
                                     <div class="col-lg-6">
-                                        <div class="form-group">
+                                        <div class="form-group" [class.has-error]="inventarioCantidadNoValido">
                                             <label>Cantidad en inventario</label>
-                                            <input type="text" class="form-control" placeholder="Cantidad en inventario">
+                                            <input type="number" class="form-control" min="0" max="10000" step="1" placeholder="Cantidad en inventario" formControlName="inventariocantidad">
+                                            <small *ngIf="inventarioCantidadNoValido" class="text-danger">Ingrese cantidad de inventario</small>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
+                                        <div class="form-group" [class.has-error]="estatusNoValido">
+                                            <label>Estatus</label>
+                                            <select class="form-control" formControlName="estatus">
+                                                    <option value="1">Activo</option>
+                                                    <option value="0">Inactivo</option>
+                                                </select>
+                                            <small *ngIf="estatusNoValido" class="text-danger">Ingrese estatus</small>
+                                        </div>
                                     </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="modal-footer">
+                                            <div class="form-group fa-pull-right">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                                <button type="submit" class="btn btn-primary">Guardar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div *ngIf="mensajeError" class="alert alert-danger alert-dismissable">
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                    <strong>¡Atencion!</strong> {{ respuesta.message }}.
                                 </div>
 
                             </form>
                         </div>
                     </div>
                 </div>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary">Guardar</button>
             </div>
         </div>
     </div>

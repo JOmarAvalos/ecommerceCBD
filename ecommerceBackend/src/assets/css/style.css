@@ -3293,9 +3293,7 @@ thead tr th {
     text-transform: uppercase;
 }
 
-thead tr th:last-child {
-    text-align: right;
-}
+thead tr th:last-child {}
 
 tbody tr th {
     color: #878787;
@@ -3308,9 +3306,7 @@ tbody tr td {
     color: #878787;
 }
 
-tbody tr td:last-child {
-    text-align: right;
-}
+tbody tr td:last-child {}
 
 .table>tbody>tr>td,
 .table>tbody>tr>th,

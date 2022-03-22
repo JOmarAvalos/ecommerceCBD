@@ -17,4 +17,10 @@ export class UbicacionService {
     );
   }
 
+  obtenerActivos() {
+    return this.http.get(
+      `${ this.url }` + `?estatus=1`
+    );
+  }
+
 }

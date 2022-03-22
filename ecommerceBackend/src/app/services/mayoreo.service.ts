@@ -7,38 +7,56 @@ import { HttpClient } from '@angular/common/http';
 })
 export class MayoreoService {
 
-  private urlConsulta  = 'https://cbd.ds-ti.com/webServices/wsBack_MayoreoConsulta.php';
-  private urlRegistra  = 'https://cbd.ds-ti.com/webServices/wsBack_MayoreoRegistro.php';
-  private urlActualiza = 'https://cbd.ds-ti.com/webServices/wsBack_MayoreoActualiza.php';
+  private urlMayoreoConsulta  = 'https://cbd.ds-ti.com/webServices/wsBack_MayoreoConsulta.php';
+  private urlMayoreoRegistra  = 'https://cbd.ds-ti.com/webServices/wsBack_MayoreoRegistro.php';
+  private urlMayoreoActualiza = 'https://cbd.ds-ti.com/webServices/wsBack_MayoreoActualiza.php';
+  private urlMayoreoSeguimientoConsulta  = 'https://cbd.ds-ti.com/webServices/wsBack_MayoreoSeguimientoConsulta.php';
+  private urlMayoreoSeguimientoRegistra  = 'https://cbd.ds-ti.com/webServices/wsBack_MayoreoSeguimientoRegistro.php';
+
 
   constructor( private http: HttpClient ) { }
 
 
   obtenerTodos() {
     return this.http.get(
-      `${ this.urlConsulta }`
+      `${ this.urlMayoreoConsulta }`
     );
   }
 
 
   obtener(id: number) {
     return this.http.get(
-      `${ this.urlConsulta }` + `?id=${ id }`
+      `${ this.urlMayoreoConsulta }` + `?id=${ id }`
     );
   }
 
 
   registrar( mayoreo: any ) {
     return this.http.get(
-      `${ this.urlRegistra }` + `?nombre=${ mayoreo.nombre }&email=${ mayoreo.email }&mensaje=${ mayoreo.mensaje }&estatus=${ mayoreo.estatus }`
+      `${ this.urlMayoreoRegistra }` + `?nombre=${ mayoreo.nombre }&email=${ mayoreo.email }&mensaje=${ mayoreo.mensaje }&estatus=${ mayoreo.estatus }`
     );
   }
 
 
   actualiza( mayoreo: any ) {
     return this.http.get(
-      `${ this.urlActualiza }` + `?id=${ mayoreo.id }&nombre=${ mayoreo.nombre }&email=${ mayoreo.email }&mensaje=${ mayoreo.mensaje }&estatus=${ mayoreo.estatus }`
+      `${ this.urlMayoreoActualiza }` + `?id=${ mayoreo.id }&nombre=${ mayoreo.nombre }&email=${ mayoreo.email }&mensaje=${ mayoreo.mensaje }&estatus=${ mayoreo.estatus }`
     );
   }
+
+
+  obtenerSeguimiento(id: number) {
+    return this.http.get(
+      `${ this.urlMayoreoSeguimientoConsulta }` + `?id=${ id }`
+    );
+  }
+
+
+  registrarSeguimiento( mayoreoSeguimiento: any, id: any ) {
+    return this.http.get(
+      `${ this.urlMayoreoSeguimientoRegistra }` + `?idVentaMayoreo=${ id }&mensaje=${ mayoreoSeguimiento.mensaje }`
+    );
+  }
+
 
 }

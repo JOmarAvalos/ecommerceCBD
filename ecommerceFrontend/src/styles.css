@@ -144,9 +144,9 @@ h6 {
 }
 
 #header.header-fixed {
-    background: #afd6ad;
+    background: #f7f7f7;
     padding: 20px 0;
-    height: 112px;
+    height: 152px;
     transition: all 0.5s;
 }
 
@@ -159,6 +159,79 @@ h6 {
 
 @media (max-width: 768px) {
     #header h1 {
+        font-size: 18px;
+        line-height: 24px;
+        margin-bottom: 5px;
+    }
+}
+
+
+/*--------------------------------------------------------------
+  # Header Fijo
+  --------------------------------------------------------------*/
+
+  #headerfijo {
+    padding: 30px 0;
+    height: 92px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    transition: all 0.5s;
+    z-index: 997;
+}
+
+#headerfijo #logo {
+    float: left;
+}
+
+#headerfijo #logo h1 {
+    font-size: 36px;
+    margin: 0;
+    padding: 6px 0;
+    line-height: 1;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+#headerfijo #logo h1 a,
+#headerfijo #logo h1 a:hover {
+    color: #fff;
+}
+
+#headerfijo #logo img {
+    padding: 0;
+    margin: 0;
+    max-height: 80px;
+}
+
+@media (max-width: 768px) {
+    #headerfijo #logo h1 {
+        font-size: 26px;
+    }
+    #headerfijo #logo img {
+        max-height: 40px;
+    }
+}
+
+#headerfijo.headerfijo-fixed {
+    background: #f7f7f7;
+    padding: 20px 0;
+    height: 152px;
+    transition: all 0.5s;
+}
+
+#headerfijo h1 {
+    color: #eee;
+    margin-bottom: 10px;
+    font-size: 24px;
+    float: right;
+}
+
+@media (max-width: 768px) {
+    #headerfijo h1 {
         font-size: 18px;
         line-height: 24px;
         margin-bottom: 5px;
@@ -186,7 +259,7 @@ h6 {
 
 #home:before {
     content: "";
-    background: rgba(0, 0, 0, 0.6);
+    background: white;
     position: absolute;
     bottom: 0;
     top: 0;
@@ -245,6 +318,7 @@ h6 {
 @media (min-width: 768px) {
     #home .home-container #carouselWeb {
         display: block;
+        padding-top: 50px;
     }
     #home .home-container #carouselMovil {
         display: none;
@@ -383,8 +457,10 @@ h6 {
 /* Nav Meu Container */
 
 #nav-menu-container {
-    float: right;
+    float: left;
+    width: 100%;
     margin: 0;
+    background-color: #afd6ad;
 }
 
 @media (max-width: 768px) {
@@ -400,7 +476,7 @@ h6 {
     padding: 0 8px 10px 8px;
     text-decoration: none;
     display: inline-block;
-    color: #fff;
+    color: #000;
     font-family: "Poppins", sans-serif;
     font-weight: 400;
     text-transform: uppercase;
@@ -615,7 +691,7 @@ body.mobile-nav-active #mobile-nav-toggle {
     background: #f7f7f7;
     padding: 80px 0;
     width: 100%;
-    height: 100vh;
+    height: 80vh;
     background-size: cover;
     position: relative;
 }
@@ -636,6 +712,11 @@ body.mobile-nav-active #mobile-nav-toggle {
     text-align: justify;
 }
 
+#about .about-container .content2 {
+    background: #f7f7f7;
+    text-align: center;
+}
+
 #about .about-container .title {
     color: #333;
     font-weight: 700;
@@ -649,7 +730,8 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 #about .about-container p {
-    line-height: 26px;
+    line-height: 13px;
+    font-size: 14px;
 }
 
 #about .about-container p:last-child {
@@ -859,7 +941,7 @@ body.mobile-nav-active #mobile-nav-toggle {
     background: #fff;
     padding: 80px 0;
     width: 100%;
-    height: 100vh;
+    height: 80vh;
     background-size: cover;
     position: relative;
 }
@@ -912,15 +994,14 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 #tienda .tienda-item img {
     position: relative;
+    border-radius: 15px;
     height: 100%;
     width: 110%;
-    top: 0;
-    transition: all 600ms cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
 #tienda .tienda-item .details {
     height: 50px;
-    background: #2dc997;
+    background: #f7f7f7;
     position: absolute;
     width: 100%;
     height: 50px;
@@ -931,14 +1012,14 @@ body.mobile-nav-active #mobile-nav-toggle {
 #tienda .tienda-item .details h4 {
     font-size: 14px;
     font-weight: 700;
-    color: #fff;
+    color: #000;
     padding: 8px 0 2px 8px;
     margin: 0;
 }
 
 #tienda .tienda-item .details span {
     display: block;
-    color: #fff;
+    color: #000;
     font-size: 13px;
     padding-left: 8px;
 }
@@ -947,9 +1028,7 @@ body.mobile-nav-active #mobile-nav-toggle {
     bottom: 0;
 }
 
-#tienda .tienda-item:hover img {
-    top: -30px;
-}
+#tienda .tienda-item:hover img {}
 
 #tienda .modal .modal-footer .btnClose {
     background: #2dc997;
@@ -1037,7 +1116,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   --------------------------------*/
 
 #faq {
-    background: #fff;
+    background: #f7f7f7;
     padding: 80px 0 60px 0;
     width: 100%;
     height: 100vh;
@@ -1045,56 +1124,69 @@ body.mobile-nav-active #mobile-nav-toggle {
     position: relative;
 }
 
-#faq .member {
+#faq .box {
+    padding: 50px 20px;
+    margin-bottom: 50px;
     text-align: center;
-    margin-bottom: 20px;
+    border: 1px solid #e6e6e6;
+    height: 200px;
+    position: relative;
+    background: #fafafa;
 }
 
-#faq .member .pic {
-    margin-bottom: 15px;
-    overflow: hidden;
-    height: 260px;
+#faq .icon {
+    position: absolute;
+    top: -36px;
+    left: calc(50% - 36px);
+    transition: 0.2s;
+    border-radius: 50%;
+    border: 6px solid #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    width: 72px;
+    height: 72px;
+    background: #2dc997;
 }
 
-#faq .member .pic img {
-    max-width: 100%;
+#faq .icon a {
+    display: inline-block;
 }
 
-#faq .member h4 {
-    font-weight: 700;
-    margin-bottom: 2px;
-    font-size: 18px;
+#faq .icon i {
+    color: #fff;
+    font-size: 24px;
 }
 
-#faq .member span {
-    font-style: italic;
-    display: block;
-    font-size: 13px;
+#faq .box:hover .icon {
+    background: #fff;
+    border: 2px solid #2dc997;
 }
 
-#faq .member .social {
-    margin-top: 15px;
-}
-
-#faq .member .social a {
-    color: #b3b3b3;
-}
-
-#faq .member .social a:hover {
+#faq .box:hover .icon i {
     color: #2dc997;
 }
 
-#faq .member .social i {
-    font-size: 18px;
-    margin: 0 2px;
+#faq .box:hover .icon a {
+    color: #2dc997;
 }
 
-#faq .modal .modal-footer .btnClose {
-    background: #2dc997;
-    border: 0;
-    padding: 10px 24px;
-    color: #fff;
-    transition: 0.4s;
+#faq .title {
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+#faq .title a {
+    color: #111;
+}
+
+#faq .description {
+    font-size: 14px;
+    line-height: 24px;
 }
 
 
@@ -1488,4 +1580,341 @@ a:focus {
     margin-left: auto;
     margin-right: auto;
     display: block;
+}
+
+
+
+/* Tienda Clasificacion Section
+  --------------------------------*/
+
+  #tienda_clasificacion {
+    background: #fff;
+    padding: 180px 0;
+    width: 100%;
+    background-size: cover;
+}
+
+#tienda_clasificacion #tienda_clasificacion-wrapper {
+    padding-right: 15px;
+}
+
+#tienda_clasificacion #tienda_clasificacion-flters {
+    padding: 0;
+    margin: 0 0 45px 0;
+    list-style: none;
+    text-align: center;
+}
+
+#tienda_clasificacion #tienda_clasificacion-flters li {
+    cursor: pointer;
+    margin: 0 10px;
+    display: inline-block;
+    padding: 10px 22px;
+    font-size: 12px;
+    line-height: 20px;
+    color: #666666;
+    border-radius: 4px;
+    text-transform: uppercase;
+    background: #fff;
+    margin-bottom: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+#tienda_clasificacion #tienda_clasificacion-flters li:hover,
+#tienda_clasificacion #tienda_clasificacion-flters li.filter-active {
+    background: #afd6ad;
+    color: #fff;
+}
+
+#tienda_clasificacion .tienda_clasificacion-item {
+    position: relative;
+    height: 100%;
+    overflow: hidden !important;
+    margin-bottom: 15px;
+    transition: all 350ms ease;
+    transform: scale(1);
+}
+
+#tienda_clasificacion .titienda_clasificacionenda-item a {
+    display: block;
+    margin-right: 15px;
+}
+
+#tienda_clasificacion .tienda_clasificacion-item img {
+    position: relative;
+    border-radius: 15px;
+    height: 100%;
+    width: 110%;
+}
+
+#tienda_clasificacion .tienda_clasificacion-item .details {
+    height: 50px;
+    background: #f7f7f7;
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    bottom: -50px;
+    transition: all 300ms cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+#tienda_clasificacion .tienda_clasificacion-item .details h4 {
+    font-size: 14px;
+    font-weight: 700;
+    color: #000;
+    padding: 8px 0 2px 8px;
+    margin: 0;
+}
+
+#tienda_clasificacion .tienda_clasificacion-item .details span {
+    display: block;
+    color: #000;
+    font-size: 13px;
+    padding-left: 8px;
+}
+
+#tienda_clasificacion .tienda_clasificacion-item:hover .details {
+    bottom: 0;
+}
+
+#tienda_clasificacion .tienda_clasificacion-item:hover img {}
+
+#tienda_clasificacion .modal .modal-footer .btnClose {
+    background: #2dc997;
+    border: 0;
+    padding: 10px 24px;
+    color: #fff;
+    transition: 0.4s;
+}
+
+#tienda_clasificacion .modal .modal-body {
+    text-align: center;
+}
+
+#tienda_clasificacion .modal .modal-body img {
+    max-width: 100%;
+}
+
+/* Terminos Section
+  --------------------------------*/
+
+  #terminos {
+    background: #fff;
+    padding-top: 180px;
+    padding-bottom: 30px;
+    width: 100%;
+    background-size: cover;
+    text-align: justify;
+}
+
+#terminos #terminos-wrapper {
+    padding-right: 15px;
+}
+
+#terminos #terminos-flters {
+    padding: 0;
+    margin: 0 0 45px 0;
+    list-style: none;
+    text-align: center;
+}
+
+#terminos #terminos-flters li {
+    cursor: pointer;
+    margin: 0 10px;
+    display: inline-block;
+    padding: 10px 22px;
+    font-size: 12px;
+    line-height: 20px;
+    color: #666666;
+    border-radius: 4px;
+    text-transform: uppercase;
+    background: #fff;
+    margin-bottom: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+#terminos #terminos-flters li:hover,
+#terminos #terminos-flters li.filter-active {
+    background: #afd6ad;
+    color: #fff;
+}
+
+#terminos .terminos-item {
+    position: relative;
+    height: 100%;
+    overflow: hidden !important;
+    margin-bottom: 15px;
+    transition: all 350ms ease;
+    transform: scale(1);
+}
+
+#terminos .terminos-item a {
+    display: block;
+    margin-right: 15px;
+}
+
+#terminos .terminos-item img {
+    position: relative;
+    border-radius: 15px;
+    height: 100%;
+    width: 110%;
+}
+
+#terminos .terminos-item .details {
+    height: 50px;
+    background: #f7f7f7;
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    bottom: -50px;
+    transition: all 300ms cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+#terminos .terminos-item .details h4 {
+    font-size: 14px;
+    font-weight: 700;
+    color: #000;
+    padding: 8px 0 2px 8px;
+    margin: 0;
+}
+
+#terminos .terminos-item .details span {
+    display: block;
+    color: #000;
+    font-size: 13px;
+    padding-left: 8px;
+}
+
+#terminos .terminos-item:hover .details {
+    bottom: 0;
+}
+
+#terminos .terminos-item:hover img {}
+
+#terminos .modal .modal-footer .btnClose {
+    background: #2dc997;
+    border: 0;
+    padding: 10px 24px;
+    color: #fff;
+    transition: 0.4s;
+}
+
+#terminos .modal .modal-body {
+    text-align: center;
+}
+
+#terminos .modal .modal-body img {
+    max-width: 100%;
+}
+
+
+/* Politica Section
+  --------------------------------*/
+
+  #politica {
+    background: #fff;
+    padding-top: 180px;
+    padding-bottom: 30px;
+    width: 100%;
+    background-size: cover;
+    text-align: justify;
+}
+
+#politica #politica-wrapper {
+    padding-right: 15px;
+}
+
+#politica #politica-flters {
+    padding: 0;
+    margin: 0 0 45px 0;
+    list-style: none;
+    text-align: center;
+}
+
+#politica #politica-flters li {
+    cursor: pointer;
+    margin: 0 10px;
+    display: inline-block;
+    padding: 10px 22px;
+    font-size: 12px;
+    line-height: 20px;
+    color: #666666;
+    border-radius: 4px;
+    text-transform: uppercase;
+    background: #fff;
+    margin-bottom: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+#politica #politica-flters li:hover,
+#politica #politica-flters li.filter-active {
+    background: #afd6ad;
+    color: #fff;
+}
+
+#politica .politica-item {
+    position: relative;
+    height: 100%;
+    overflow: hidden !important;
+    margin-bottom: 15px;
+    transition: all 350ms ease;
+    transform: scale(1);
+}
+
+#politica .politica-item a {
+    display: block;
+    margin-right: 15px;
+}
+
+#politica .politica-item img {
+    position: relative;
+    border-radius: 15px;
+    height: 100%;
+    width: 110%;
+}
+
+#politica .politica-item .details {
+    height: 50px;
+    background: #f7f7f7;
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    bottom: -50px;
+    transition: all 300ms cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+#politica .politica-item .details h4 {
+    font-size: 14px;
+    font-weight: 700;
+    color: #000;
+    padding: 8px 0 2px 8px;
+    margin: 0;
+}
+
+#politica .politica-item .details span {
+    display: block;
+    color: #000;
+    font-size: 13px;
+    padding-left: 8px;
+}
+
+#politica .politica-item:hover .details {
+    bottom: 0;
+}
+
+#politica .politica-item:hover img {}
+
+#politica .modal .modal-footer .btnClose {
+    background: #2dc997;
+    border: 0;
+    padding: 10px 24px;
+    color: #fff;
+    transition: 0.4s;
+}
+
+#politica .modal .modal-body {
+    text-align: center;
+}
+
+#politica .modal .modal-body img {
+    max-width: 100%;
 }

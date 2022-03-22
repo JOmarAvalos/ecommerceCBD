@@ -36,40 +36,51 @@
                         <div class="card alert">
                             <div class="card-header">
                                 <h4>
-                                    <button type="button" (click)="nuevo()" class="btn btn-primary btn-flat btn-addon m-b-10 m-l-5" data-toggle="modal" data-target="#exampleModalCenter"><i class="ti-plus"></i>Nuevo</button>
+                                    <button type="button" (click)="nuevo()" class="btn btn-primary btn-flat btn-addon m-b-10 m-l-5" data-toggle="modal" data-target="#mayoreoModalCenter"><i class="ti-plus"></i>Nuevo</button>
                                 </h4>
                             </div>
                             <div class="card-body">
                                 <table class="table table-responsive table-striped">
                                     <thead>
                                         <tr>
-                                            <th>#ID</th>
+                                            <th class="text-center">#ID</th>
                                             <th>Nombre</th>
-                                            <th>Email</th>
-                                            <th>Fecha alta</th>
-                                            <th>Estatus</th>
-                                            <th>Acciones</th>
+                                            <th class="text-center">Email</th>
+                                            <th class="text-center">Fecha alta</th>
+                                            <th class="text-center">Estatus</th>
+                                            <th class="text-center">Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody>
 
-                                        <tr *ngFor="let mensaje of mayoreo">
-                                            <th scope="row">{{ mensaje.cve_venta_mayoreo}}</th>
-                                            <td>{{ mensaje.nombre}}</td>
-                                            <td>{{ mensaje.email }}</td>
-                                            <td>{{ mensaje.fch_creacion | date:'medium' }}</td>
+                                        <tr *ngFor="let mensaje of mayoreo | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }">
+                                            <th class="text-center" scope="row">{{ mensaje.cve_venta_mayoreo }}</th>
                                             <td>
+                                                <a (click)="seguimiento( mensaje.cve_venta_mayoreo )" class="btn btn-primary btn-outline" title="Seguimiento">{{ mensaje.nombre }}</a>
+                                            </td>
+                                            <td class="text-center">{{ mensaje.email }}</td>
+                                            <td class="text-center">{{ mensaje.fch_creacion | date:'medium' }}</td>
+                                            <td class="text-center">
                                                 <ng-template [ngIf]="mensaje.ban_activo == '1'"><span class="badge badge-primary">Nuevo</span></ng-template>
                                                 <ng-template [ngIf]="mensaje.ban_activo == '2'"><span class="badge badge-info">Proceso</span></ng-template>
                                                 <ng-template [ngIf]="mensaje.ban_activo == '0'"><span class="badge badge-default">Atendido</span></ng-template>
                                             </td>
                                             <td class="text-center">
-                                                <a (click)="editar( mensaje.cve_venta_mayoreo )" class="tooltip-test" title="Editar" data-toggle="modal" data-target="#exampleModalCenter"><i class="ti-pencil-alt pull-center"></i></a>
+                                                <a (click)="editar( mensaje.cve_venta_mayoreo )" class="tooltip-test" title="Editar" data-toggle="modal" data-target="#mayoreoModalCenter"><i class="ti-pencil-alt pull-center"></i></a>
                                             </td>
                                         </tr>
 
                                     </tbody>
                                 </table>
+
+                                <!-- Control de paginador-->
+                                <div class="page-header">
+                                    <div class="page-title">
+                                        <div class="breadcrumb text-right">
+                                            <pagination-controls [responsive]="responsive" [previousLabel]="previousLabel" [nextLabel]="nextLabel" (pageChange)="currentPage = $event"></pagination-controls>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -88,14 +99,14 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="mayoreoModalCenter" tabindex="-1" role="dialog" aria-labelledby="mayoreoModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title" id="exampleModalLongTitle">Mayoreo nuevo</h4>
+                <h4 class="modal-title" id="exampleModalLongTitle">Mayoreo</h4>
             </div>
             <div class="modal-body">
 
@@ -127,7 +138,7 @@
                                     <div class="col-lg-12">
                                         <div class="form-group" [class.has-error]="mensajeNoValido">
                                             <label>Mensaje</label>
-                                            <input type="text" class="form-control" placeholder="Mensaje" formControlName="mensaje">
+                                            <textarea type="text" class="form-control" rows="5" formControlName="mensaje"></textarea>
                                             <small *ngIf="mensajeNoValido" class="text-danger">Ingrese mensaje</small>
                                         </div>
                                     </div>

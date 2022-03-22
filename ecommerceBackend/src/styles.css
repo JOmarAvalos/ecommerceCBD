@@ -45,6 +45,7 @@ body {
     font-family: Poppins, sans-serif;
     background: #f5f5f5;
     color: #878787;
+    padding-right: 0px !important
 }
 
 a,
@@ -1546,6 +1547,14 @@ Header
 .dropdown-task .progress-bar {
     -webkit-box-shadow: none;
     box-shadow: none;
+}
+
+.main .page-footer {
+    min-height: 50px;
+    margin: 0px;
+    padding: 0px 15px;
+    background: #fff;
+    border-bottom: 0px;
 }
 
 
@@ -3426,9 +3435,7 @@ thead tr th {
     text-transform: uppercase;
 }
 
-thead tr th:last-child {
-    text-align: right;
-}
+thead tr th:last-child {}
 
 tbody tr th {
     color: #878787;
@@ -3441,9 +3448,7 @@ tbody tr td {
     color: #878787;
 }
 
-tbody tr td:last-child {
-    text-align: right;
-}
+tbody tr td:last-child {}
 
 .table>tbody>tr>td,
 .table>tbody>tr>th,
@@ -3671,10 +3676,22 @@ Profile
     font-size: 14px;
 }
 
-.user-job-title {
-    font-size: 14px;
+.user-job-name {
+    font-size: 18px;
+    padding-bottom: 5px;
+    color: #878787;
+}
+
+.user-job-email {
+    font-size: 16px;
     padding-bottom: 5px;
     color: #00838F;
+}
+
+.user-job-message {
+    font-size: 16px;
+    padding-bottom: 5px;
+    color: #878787;
 }
 
 .ratings h4 {
@@ -4390,4 +4407,8 @@ Mane upload
     margin-right: auto;
     display: block;
     max-width: 50%;
+}
+
+.ngx-pagination .current {
+    background: #00838F !important;
 }

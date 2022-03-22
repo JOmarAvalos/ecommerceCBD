@@ -13,10 +13,20 @@ header("Allow: GET, POST, OPTIONS, PUT, DELETE");
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
+  // Variables de entrada
+  $id      = $_GET['id'];
+  $estatus = $_GET['estatus'];
+
   // Query verificacion
   $query = "SELECT tcl.cve_tipo_cliente, tcl.nombre, tcl.ban_activo 
-              FROM cbddesarrollo.cbd_cata_tipo_cliente AS tcl
-             WHERE tcl.ban_activo = 1 ";
+              FROM cbddesarrollo.cbd_cata_tipo_cliente AS tcl 
+             WHERE 1 = 1 ";
+  if($estatus != "") {
+    $query .= " AND tcl.ban_activo = " . $estatus;
+  }
+  if($id != "") {
+    $query .= " AND tcl.cve_tipo_cliente = " . $id;
+  }    
 
   $result = pg_query($query);
   $numFilas = pg_num_rows($result);

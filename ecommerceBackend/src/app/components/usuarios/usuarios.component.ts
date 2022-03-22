@@ -4,6 +4,7 @@ import { UsuariosService } from '../../services/usuarios.service';
 import { UsuarioPerfilService } from 'src/app/services/usuario-perfil.service';
 import { ScriptLoaderService } from '../../script-loader.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -23,6 +24,13 @@ export class UsuariosComponent implements OnInit {
   respuesta: any = [];
   mensajeError: boolean = false;
 
+  // Parametros Paginacion.
+  currentPage: number = 1;
+  itemsPerPage: number = 10;
+  previousLabel: string = 'Anterior';
+  nextLabel: string = 'Siguiente';
+  responsive: boolean = true;
+
   constructor( private usuariosService: UsuariosService, 
                private http: HttpClient, 
                private scriptLoader: ScriptLoaderService, 
@@ -31,15 +39,23 @@ export class UsuariosComponent implements OnInit {
 
     this.crearFormulario();
 
+    // Loading icon
+    Swal.fire({
+      allowOutsideClick: false,
+      text: 'Espere por favor...'
+    });
+    Swal.showLoading();
+
     // Usuarios
     this.usuariosService.obtenerTodos()
       .subscribe( (resp: any) => {
         this.usuarios = resp;
+        Swal.close();
         // console.log(resp);
       });
 
     // Perfil de usuarios
-    this.usuarioPerfilService.obtenerTodos()
+    this.usuarioPerfilService.obtenerActivos()
       .subscribe( (resp: any) => {
         this.usuarioPerfil = resp;
         // console.log(resp);
