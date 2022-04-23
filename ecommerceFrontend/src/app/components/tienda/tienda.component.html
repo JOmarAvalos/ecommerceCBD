@@ -47,11 +47,26 @@
 
                 <div class="col-lg-3 col-md-6 tienda_clasificacion-item" *ngFor="let articulo of articulos">
                     <a href="">
-                        <img src="../../../assets/img/tienda/Articulo_1.jpg" alt="{{ articulo.nombre }}">
-                        <div class="details">
-                            <h4>{{ articulo.nombre }}</h4>
-                            <span>{{ articulo.descripcion_corta }}</span>
-                        </div>
+
+                        
+
+
+
+
+
+                        <ng-template [ngIf]="articulo.imagen_principal != ''">
+                            <img src="../../../assets/img/tienda/{{ articulo.imagen_principal }}" alt="{{ articulo.nombre }}">
+                        </ng-template>
+                        <ng-template [ngIf]="articulo.imagen_principal == ''">
+                            <img src="../../../assets/img/tienda/sinImagen.png" alt="{{ articulo.nombre }}">
+                        </ng-template>
+
+`
+
+                        
+                        <hr>
+                        <h6>{{ articulo.descripcion_corta }}</h6>
+                        <button>COMPRAR</button>
                     </a>
                 </div>
     

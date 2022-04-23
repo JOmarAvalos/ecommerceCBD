@@ -5,8 +5,6 @@ import { ExcelServicesService } from '../../../services/excel-services.service';
 import { ScriptLoaderService } from '../../../script-loader.service';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
 import Swal from 'sweetalert2';
 
 
@@ -71,6 +69,7 @@ export class RepListaPreciosComponent implements OnInit {
       const pdfWidth = doc.internal.pageSize.getWidth() - 2 * bufferX;
       const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
       doc.addImage(img, 'PNG', bufferX, bufferY, pdfWidth, pdfHeight, undefined, 'FAST');
+      // doc.fromHTML(DATA,  bufferX, bufferY, 0);
       return doc;
     }).then((docResult) => {
       docResult.save('lista_precios_export_' + new Date().getTime() + '.pdf');
