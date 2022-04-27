@@ -10,6 +10,7 @@ import { TerminosComponent } from './components/terminos/terminos.component';
 import { PoliticaComponent } from './components/politica/politica.component';
 import { EnConstruccionComponent } from './components/en-construccion/en-construccion.component';
 import { TiendaComponent } from './components/tienda/tienda.component';
+import { ArticuloComponent } from './components/articulo/articulo.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { TiendaComponent } from './components/tienda/tienda.component';
     TerminosComponent,
     PoliticaComponent,
     EnConstruccionComponent,
-    TiendaComponent
+    TiendaComponent,
+    ArticuloComponent
   ],
   imports: [
     BrowserModule,

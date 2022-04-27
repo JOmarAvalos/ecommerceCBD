@@ -65,37 +65,62 @@
 <main id="main">
 
 <!--==========================
-      Tienda Clasificacion Section
+      Articulo Section
     ============================-->
-    <section id="tienda_clasificacion">
+    <section id="articulo">
         <div class="container wow fadeInUp">
-            <div class="section-header" *ngFor="let cat of categoria">
-                <h3 class="section-title">Tienda</h3>
-                <p class="section-description">{{ cat.nombre }}</p>
+            <div class="section-header">
+                <h3 class="section-title">Articulo</h3>
+                <p class="section-description">{{ articuloName }}</p>
             </div>
 
-            <div class="row" id="tienda_clasificacion-wrapper">
-
-                <div class="col-lg-3 col-md-6 tienda_clasificacion-item" *ngFor="let articulo of articulos">
-                    <a [routerLink]="['/articulo', articulo.nombre ]">
-
-                        <ng-template [ngIf]="articulo.imagen_principal != ''">
-                            <img src="../../../assets/img/tienda/{{ articulo.imagen_principal }}" alt="{{ articulo.nombre }}">
-                        </ng-template>
-                        <ng-template [ngIf]="articulo.imagen_principal == ''">
-                            <img src="../../../assets/img/tienda/sinImagen.png" alt="{{ articulo.nombre }}">
-                        </ng-template>
-
-                        <hr>
-                        <h6>{{ articulo.nombre }}</h6>
-                        <h6>{{ articulo.precio_minimo | currency }} - {{ articulo.precio_maximo | currency }}</h6>
-                        <button>SELECCIONAR</button>
-                    </a>
+            <div class="row" id="about-wrapper" *ngFor="let articulo of articuloGeneral">
+                <div class="col-lg-6 content2 order-lg-1">
+                    <img src="../../../assets/img/tienda/{{ articulo.imagen_principal }}" style="width: 60%;" alt=""> 
                 </div>
-                
+                <div class="col-lg-6 content order-lg-1">
+                    
+                    <div class="col-lg-6 order-lg-1">
+                        {{ articulo.precio_minimo | currency }} - {{ articulo.precio_maximo | currency }}
+                    </div>
+                    <br>
+                    <div class="col-lg-12 order-lg-1">
+                        {{ articulo.descripcion_larga }}
+                    </div>
+                    <br>
+                    <div class="col-lg-12 order-lg-1">
+                        Concentración:
+                        <select name="miselect">
+                            <option [value]="concentracion" *ngFor="let concentracion of concentraciones">{{concentracion.concentracion}}</option>
+                        </select>
+                    </div>
+                    <br>
+                    <div class="col-lg-12 order-lg-1">
+                        Presentación: 
+                        <select name="miselect">
+                            <option [value]="presentacion" *ngFor="let presentacion of presentaciones">{{presentacion.presentacion}}</option>
+                        </select>
+                    </div>
+                    <br>
+                    <div class="col-lg-12 order-lg-1">
+                        Sabor: 
+                        <select name="miselect">
+                            <option [value]="sabor" *ngFor="let sabor of sabores">{{sabor.sabor}}</option>
+                        </select>
+                    </div>
+                    <br>
+                    
+
+
+                </div>
             </div>
+                
+
+
+
+
         </div>
-    </section><!-- #tienda_clasificacion -->
+    </section><!-- #articulo -->
 
 </main>
 

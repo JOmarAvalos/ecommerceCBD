@@ -29,7 +29,7 @@ export class TiendaComponent implements OnInit {
       });
 
       // Articulos
-      this.articulosService.obtenerPorCategoria(params.id)
+      this.articulosService.obtenerPorCategoriaV2(params.id)
         .subscribe( (resp: any) => {
         this.articulos = resp;
         console.log(this.articulos);

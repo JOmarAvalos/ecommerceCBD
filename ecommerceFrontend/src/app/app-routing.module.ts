@@ -8,6 +8,7 @@ import { TerminosComponent } from './components/terminos/terminos.component';
 import { PoliticaComponent } from './components/politica/politica.component';
 import { EnConstruccionComponent } from './components/en-construccion/en-construccion.component';
 import { TiendaComponent } from './components/tienda/tienda.component';
+import { ArticuloComponent } from './components/articulo/articulo.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'politica', component: PoliticaComponent },
   { path: 'enConstruccion', component: EnConstruccionComponent },
   { path: 'tienda/:id', component: TiendaComponent },
+  { path: 'articulo/:name', component: ArticuloComponent },
   { path: '**', pathMatch: 'full', redirectTo: 'inicio'}
 ];
 

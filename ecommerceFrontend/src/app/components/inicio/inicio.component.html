@@ -2,29 +2,62 @@
   Header
   ============================-->
 <header id="header">
-    <div class="container">
 
-        <div id="logo" class="pull-left">
-            <a href="#home">
-                <img src="../../../assets/img/logo/logosombra127.png" class="img-responsive" alt="MyLoveCBD Logo">
-            </a>
-        </div>
-        <br>
-        <br>
-        <br>
-        <br>
-        <nav id="nav-menu-container">
-            <ul class="nav-menu">
-                <li class="menu-active"><a href="#home">Inicio</a></li>
-                <li><a href="#about">Nosotros</a></li>
-                <li><a href="#products">Tienda</a></li>
-                <li><a href="#">Blog</a></li>
-                <li><a href="#faq">FAQ</a></li>
-                <li><a href="#">Mi Cuenta</a></li>
-                <li><a href="#contact">Venta al mayoreo</a></li>
-            </ul>
-        </nav>
-        <!-- #nav-menu-container -->
+    <nav id="nav-menu-container-top">
+        <ul class="nav-menu-top">
+            <li>
+                <a href="https://www.tiktok.com/@myloveforcbd" target="_blank">
+                    <img src="../../../assets/img/barra/tiktok.png" class="icono-top" alt="Tiktok">
+                </a>
+            </li>
+            <li>
+                <a href="https://www.instagram.com/myloveforcbd/" target="_blank">
+                    <img src="../../../assets/img/barra/insta.png" class="icono-top" alt="Instagram">
+                </a>
+            </li>
+            <li>
+                <a href="https://www.facebook.com/MyLoveForCBD" target="_blank">
+                    <img src="../../../assets/img/barra/face.png" class="icono-top" alt="Facebook">
+                </a>
+            </li>
+            <li>
+                <a href="https://wa.me/525548172143/?text=Hola,%20estoy%20interesado/a%20en..." target="_blank">
+                    <img src="../../../assets/img/barra/whats.png" class="icono-top" alt="Whatsapp">
+                </a>
+            </li>
+            <li>
+                <a >
+                    <img src="../../../assets/img/barra/carritoIcono.png" style="width: 35px;" alt="Carrito">
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <div id="miCuentaLink" >
+        <a href="#">
+            <img src="../../../assets/img/miCuentaIcono.png" style="width: 110px; position: absolute; top: 50px; right: 5px;" alt="Mi Cuenta">
+        </a>
+    </div>
+
+
+    <div id="logo" class="pull-left">
+        <a href="#home" style="padding-left: 50px;">
+            <img src="../../../assets/img/logo/logosombra127.png" class="img-responsive" alt="MyLoveCBD Logo">
+        </a>
+    </div>
+
+    <!-- #nav-menu-container -->
+    <nav id="nav-menu-container" style="padding-left: 50px;">
+        <ul class="nav-menu">
+            <li class="menu-active"><a href="#home">Inicio</a></li>
+            <li><a href="#about">Nosotros</a></li>
+            <li><a href="#tienda">Tienda</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#contact">Venta al mayoreo</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
     </div>
 </header>
 <!-- #header -->
@@ -37,24 +70,21 @@
 
         <div id="carouselWeb" class="carousel slide" data-ride="carousel">
 
-            <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            </ol>
-
             <div class="carousel-inner">
                 <!-- Recorrido del arreglo  -->
 
                 <!-- Solo activa la primera imagen "class:active" -->
                 <div class="carousel-item active">
-                    <img class="d-block w-40" src="../../../assets/img/carrusel/aceitescapsulas_v2.jpg" alt="aceitescapsulas">
+                    <img class="d-block w-40" src="../../../assets/img/carrusel/ejercicio.png" alt="Ejercicio">
                 </div>
                 <div class="carousel-item">
-                    <img class="d-block w-40" src="../../../assets/img/carrusel/collagejust_v2.jpg" alt="collagejust">
+                    <img class="d-block w-40" src="../../../assets/img/carrusel/limonada.png" alt="Limonada">
                 </div>
                 <div class="carousel-item">
-                    <img class="d-block w-40" src="../../../assets/img/carrusel/desastre-mascotas_v2.jpg" alt="desastre-mascotas">
+                    <img class="d-block w-40" src="../../../assets/img/carrusel/paletas.png" alt="Paletas">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-40" src="../../../assets/img/carrusel/perro.png" alt="Perro">
                 </div>
 
             </div>
@@ -101,11 +131,6 @@
 <!-- #home -->
 
 
-
-
-
-
-
 <main id="main">
 
     <!--==========================
@@ -122,7 +147,7 @@
                 
                 <div class="row" id="about-wrapper">
                     <div class="col-lg-6 content2 order-lg-1">
-                        <img src="../../../assets/img/about/About.png" alt="">
+                        <img src="../../../assets/img/about/About.png" style="width: 60%;" alt="">
                     </div>
                     <div class="col-lg-6 content order-lg-1">
                         
@@ -245,12 +270,6 @@
         </div>
 
     </section>
-
-
-
-
-
-
     <!-- #about -->
 
 
@@ -291,24 +310,24 @@
 
                 <div class="col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
                     <div class="box">
-                        <div class="icon"><a href=""><i class="fa fa-atom"></i></a></div>
-                        <h4 class="title"><a href="">¿Qué es el CBD?</a></h4>
+                        <div class="icon"><a ><i class="fa fa-atom"></i></a></div>
+                        <h4 class="title"><a >¿Qué es el CBD?</a></h4>
                         <p class="description">CBD es la abreviatura de cannabidiol. El cannabidiol es un extracto de cáñamo, un término comúnmente utilizado para las cepas de la planta de cannabis sativa con niveles muy bajos de THC, tan es así que todos nuestros asociados
                             mantienen el compromiso de que...</p>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
                     <div class="box">
-                        <div class="icon"><a href=""><i class="fa fa-book"></i></a></div>
-                        <h4 class="title"><a href="">¿Es legal el CBD?</a></h4>
+                        <div class="icon"><a ><i class="fa fa-book"></i></a></div>
+                        <h4 class="title"><a >¿Es legal el CBD?</a></h4>
                         <p class="description">El uso medicinal, alimenticio, cosmético y vitamínico del cannabis en México está despenalizado desde el 20 de junio de 2017, y desde entonces hay avances que han permitido tener disponibles aceites, ungüentos y otros productos
                             con CBD.</p>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
                     <div class="box">
-                        <div class="icon"><a href=""><i class="fa fa-box"></i></a></div>
-                        <h4 class="title"><a href="">¿Dónde está mi paquete?</a></h4>
+                        <div class="icon"><a ><i class="fa fa-box"></i></a></div>
+                        <h4 class="title"><a >¿Dónde está mi paquete?</a></h4>
                         <p class="description">Utilice el número de seguimiento proporcionado para rastrear su número en el sitio web de la paquetería. El número de seguimiento se puede encontrar en el correo electrónico de confirmación de su pedido o en su historial de pedidos
                             si creó una cuenta durante el pago.</p>
                     </div>
@@ -316,8 +335,8 @@
 
                 <div class="col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
                     <div class="box">
-                        <div class="icon"><a href=""><i class="fa fa-box-open"></i></a></div>
-                        <h4 class="title"><a href="">¿Qué debo hacer para devolver un producto?</a></h4>
+                        <div class="icon"><a ><i class="fa fa-box-open"></i></a></div>
+                        <h4 class="title"><a >¿Qué debo hacer para devolver un producto?</a></h4>
                         <p class="description">Para hacer una devolución, su artículo debe devolverse en su empaque original. Todos los reembolsos e intercambios están sujetos a revisión. Para completar su devolución, necesitamos el recibo o comprobante de compra.
                         </p>
                     </div>
@@ -360,7 +379,6 @@
         <div class="container wow fadeInUp">
             <div class="section-header">
                 <h3 class="section-title">Venta al mayoreo</h3>
-                <p class="section-description">&nbsp;</p>
             </div>
         </div>
 
