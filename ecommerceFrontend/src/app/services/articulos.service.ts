@@ -9,12 +9,11 @@ export class ArticulosService {
 
   private urlConsulta   = 'https://cbd.ds-ti.com/webServices/wsFront_ArticulosConsulta.php';
   private urlConsultaV2 = 'https://cbd.ds-ti.com/webServices/wsFront_ArticulosConsulta_v2.php';
-  private urlConsultaConcentracion = 'https://cbd.ds-ti.com/webServices/wsFront_ArticuloConcentracionConsulta.php?';
+  private urlConsultaConcentracion = 'https://cbd.ds-ti.com/webServices/wsFront_ArticuloConcentracionConsulta.php';
   private urlConsultaPresentacion = 'https://cbd.ds-ti.com/webServices/wsFront_ArticuloPresentacionConsulta.php';
   private urlConsultaSabor = 'https://cbd.ds-ti.com/webServices/wsFront_ArticuloSaborConsulta.php';
+  private urlArticuloImagen = 'https://cbd.ds-ti.com/webServices/wsFront_ArticuloImagen.php';
 
-
-  
 
   constructor( private http: HttpClient ) { }
 
@@ -57,6 +56,12 @@ export class ArticulosService {
   obtenerSabores(name: string) {
     return this.http.get(
       `${ this.urlConsultaSabor }` + `?name=${ name }`
+    );
+  }
+
+  obtenerImagen(nom: string, con: string, pre: string, sab: string) {
+    return this.http.get(
+      `${ this.urlArticuloImagen }` + `?nom=${ nom }&con=${ con }&pre=${ pre }&sab=${ sab }`
     );
   }
 

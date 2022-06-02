@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CategoriaService } from '../../services/categoria.service';
 import { ArticulosService } from '../../services/articulos.service';
+import { Location } from '@angular/common'
 
 
 @Component({
@@ -17,7 +18,8 @@ export class TiendaComponent implements OnInit {
 
   constructor( private activatedRoute: ActivatedRoute,
                private categoriaService: CategoriaService,
-               private articulosService: ArticulosService ) {
+               private articulosService: ArticulosService,
+               private _location: Location ) {
 
     this.activatedRoute.params.subscribe( params => {
 
@@ -41,6 +43,10 @@ export class TiendaComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  regresar() {
+    this._location.back();
   }
 
 }

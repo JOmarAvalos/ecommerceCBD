@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ArticulosService } from '../../services/articulos.service';
+import { Location } from '@angular/common'
 
 @Component({
   selector: 'app-articulo',
@@ -15,10 +16,14 @@ export class ArticuloComponent implements OnInit {
   concentraciones: any = [];
   presentaciones: any = [];
   sabores: any = [];
+  articuloImagen: any = [];
+  articuloImagenStr: string = '';
+  articuloExistencia: string = '';
 
 
   constructor( private activatedRoute: ActivatedRoute,
-               private articulosService: ArticulosService ) { 
+               private articulosService: ArticulosService,
+               private _location: Location ) { 
 
     this.activatedRoute.params.subscribe( params => {
       this.articuloName = params.name;
@@ -27,14 +32,12 @@ export class ArticuloComponent implements OnInit {
       this.articulosService.obtenerImagenPrincipal(params.name)
         .subscribe( (resp: any) => {
         this.articuloGeneral = resp;
-        console.log(this.articuloGeneral);
       });
 
       // Concentraciones
       this.articulosService.obtenerConcentraciones(params.name)
         .subscribe( (resp: any) => {
         this.concentraciones = resp;
-        console.log(this.concentraciones);
       });
 
 
@@ -42,20 +45,49 @@ export class ArticuloComponent implements OnInit {
       this.articulosService.obtenerPresentaciones(params.name)
         .subscribe( (resp: any) => {
         this.presentaciones = resp;
-        console.log(this.presentaciones);
       });
 
       // Sabores
       this.articulosService.obtenerSabores(params.name)
         .subscribe( (resp: any) => {
         this.sabores = resp;
-        console.log(this.sabores);
       });
 
     });
   }
 
   ngOnInit(): void {
+  }
+
+  openConcentracion(nom: any, con: any, pre: any, sab: any) {
+    this.articulosService.obtenerImagen(nom, con, pre, sab)
+      .subscribe( (resp: any) => {
+        this.articuloImagen = resp;
+        this.articuloImagenStr = resp[0].imagen_principal;
+        this.articuloExistencia = resp[0].inventario_cantidad;
+      });
+  }
+
+  openPresentacion(nom: any, con: any, pre: any, sab: any) {
+    this.articulosService.obtenerImagen(nom, con, pre, sab)
+      .subscribe( (resp: any) => {
+        this.articuloImagen = resp;
+        this.articuloImagenStr = resp[0].imagen_principal;
+        this.articuloExistencia = resp[0].inventario_cantidad;
+      });
+  }
+
+  openSabor(nom: any, con: any, pre: any, sab: any) {
+    this.articulosService.obtenerImagen(nom, con, pre, sab)
+      .subscribe( (resp: any) => {
+        this.articuloImagen = resp;
+        this.articuloImagenStr = resp[0].imagen_principal;
+        this.articuloExistencia = resp[0].inventario_cantidad;
+      });
+  }
+
+  regresar() {
+    this._location.back();
   }
 
 }

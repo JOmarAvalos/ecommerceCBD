@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoriaService } from '../../services/categoria.service';
+import { InformesService } from '../../services/informes.service';
 
 
 @Component({
@@ -11,8 +12,14 @@ import { CategoriaService } from '../../services/categoria.service';
 export class InicioComponent implements OnInit {
 
   categorias: any = [];
+  informesCategorias: any = [];
+  informesProductos: any = [];
+  informesSabores: any = [];
+  showBotonInforme: Boolean = false;
+  informeFile: String = '';
 
-  constructor( private categoriaService: CategoriaService ) {
+  constructor( private categoriaService: CategoriaService, 
+               private informesService: InformesService ) {
 
     // Categorias
     this.categoriaService.obtenerActivos()
@@ -20,51 +27,51 @@ export class InicioComponent implements OnInit {
         this.categorias = resp;
       });
 
+    // Informe categorias
+    this.informesService.obtenerCategorias()
+      .subscribe( (resp: any) => {
+        this.informesCategorias = resp;
+      });
+
   }
 
   ngOnInit(): void {
   }
 
-  displayStyleNuestra  = "none";
-  displayStyleQuienes  = "none";
-  displayStyleValores  = "none";
-  displayStylePorque   = "none";
-  displayStyleGarantia = "none";
-
-  
-  openPopupNuestra() {
-    this.displayStyleNuestra = "block";
-  }
-  closePopupNuestra() {
-    this.displayStyleNuestra = "none";
-  }
-
-  openPopupQuienes() {
-    this.displayStyleQuienes = "block";
-  }
-  closePopupQuienes() {
-    this.displayStyleQuienes = "none";
+  openProductList(cat: any) {
+    // Informe productos
+    this.informesSabores = [];
+    this.showBotonInforme = false;
+    if (cat == '') {
+      this.informesProductos = [];
+    }else{
+      this.informesService.obtenerProductos(cat)
+      .subscribe( (resp: any) => {
+        this.informesProductos = resp;
+      });
+    }
   }
 
-  openPopupValores() {
-    this.displayStyleValores = "block";
-  }
-  closePopupValores() {
-    this.displayStyleValores = "none";
+  openSaborList(nom: any) {
+    // Informe sabor
+    this.showBotonInforme = false;
+    if (nom == '') {
+      this.informesSabores = [];
+    }else{
+      this.informesService.obtenerSabores(nom)
+      .subscribe( (resp: any) => {
+        this.informesSabores = resp;
+      });
+    }
   }
 
-  openPopupPorque() {
-    this.displayStylePorque = "block";
-  }
-  closePopupPorque() {
-    this.displayStylePorque = "none";
-  }
-
-  openPopupGarantia() {
-    this.displayStyleGarantia = "block";
-  }
-  closePopupGarantia() {
-    this.displayStyleGarantia = "none";
+  openBotonDescarga(informe: any) {
+    if (informe == '') {
+      this.showBotonInforme = false;
+    }else{
+      this.showBotonInforme = true;
+      this.informeFile = informe;
+    }
   }
 
 }

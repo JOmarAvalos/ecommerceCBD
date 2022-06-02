@@ -50,10 +50,20 @@
     <nav id="nav-menu-container" style="padding-left: 50px;">
         <ul class="nav-menu">
             <li class="menu-active"><a href="#home">Inicio</a></li>
-            <li><a href="#about">Nosotros</a></li>
+            <li><a routerLink="/about">Nosotros</a></li>
             <li><a href="#tienda">Tienda</a></li>
-            <li><a href="#faq">FAQ</a></li>
+            <li><a routerLink="/faq">FAQ</a></li>
+            <li><a routerLink="/blog">Blog</a></li>
+            <!--<li><a href="#informes">Informes</a></li>-->
             <li><a href="#contact">Venta al mayoreo</a></li>
+            <li class="menu-has-children">
+                <a href="#">Calculadora</a>
+                <ul>
+                    <li>
+                        <!--<iframe src="" style="border:0;min-height:600px;height:100%;left:0;position:absolute;top:0;width:100%"></iframe><br>-->
+                    </li>
+                </ul>
+            </li>
         </ul>
     </nav>
 
@@ -94,6 +104,11 @@
                 </div>
                 
             </div>
+
+            <div class="text-center mt-5" (click)="regresar()">
+                <button>REGRESAR</button>
+            </div>
+
         </div>
     </section><!-- #tienda_clasificacion -->
 

@@ -693,4 +693,4 @@ create table cbddesarrollo.cbd_ventas_mayoreo_seguimiento
 
 
 
-
+ALTER TABLE cbddesarrollo.cbd_articulos ADD COLUMN informe character varying(100);

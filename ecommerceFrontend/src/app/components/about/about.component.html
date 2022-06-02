@@ -1,0 +1,253 @@
+<!--==========================
+  Header
+  ============================-->
+  <header id="header">
+
+    <nav id="nav-menu-container-top">
+        <ul class="nav-menu-top">
+            <li>
+                <a href="https://www.tiktok.com/@myloveforcbd" target="_blank">
+                    <img src="../../../assets/img/barra/tiktok.png" class="icono-top" alt="Tiktok">
+                </a>
+            </li>
+            <li>
+                <a href="https://www.instagram.com/myloveforcbd/" target="_blank">
+                    <img src="../../../assets/img/barra/insta.png" class="icono-top" alt="Instagram">
+                </a>
+            </li>
+            <li>
+                <a href="https://www.facebook.com/MyLoveForCBD" target="_blank">
+                    <img src="../../../assets/img/barra/face.png" class="icono-top" alt="Facebook">
+                </a>
+            </li>
+            <li>
+                <a href="https://wa.me/525548172143/?text=Hola,%20estoy%20interesado/a%20en..." target="_blank">
+                    <img src="../../../assets/img/barra/whats.png" class="icono-top" alt="Whatsapp">
+                </a>
+            </li>
+            <li>
+                <a >
+                    <img src="../../../assets/img/barra/carritoIcono.png" style="width: 35px;" alt="Carrito">
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <div id="miCuentaLink" >
+        <a href="#">
+            <img src="../../../assets/img/miCuentaIcono.png" style="width: 110px; position: absolute; top: 50px; right: 5px;" alt="Mi Cuenta">
+        </a>
+    </div>
+
+
+    <div id="logo" class="pull-left">
+        <a href="#home" style="padding-left: 50px;">
+            <img src="../../../assets/img/logo/logosombra127.png" class="img-responsive" alt="MyLoveCBD Logo">
+        </a>
+    </div>
+
+    <!-- #nav-menu-container -->
+    <nav id="nav-menu-container" style="padding-left: 50px;">
+        <ul class="nav-menu">
+            <li class="menu-active"><a href="#home">Inicio</a></li>
+            <li><a routerLink="/about">Nosotros</a></li>
+            <li><a href="#tienda">Tienda</a></li>
+            <li><a routerLink="/faq">FAQ</a></li>
+            <li><a routerLink="/blog">Blog</a></li>
+            <!--<li><a href="#informes">Informes</a></li>-->
+            <li><a href="#contact">Venta al mayoreo</a></li>
+            <li class="menu-has-children">
+                <a href="#">Calculadora</a>
+                <ul>
+                    <li>
+                        <!--<iframe src="" style="border:0;min-height:600px;height:100%;left:0;position:absolute;top:0;width:100%"></iframe><br>-->
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="container">
+    </div>
+</header>
+<!-- #header -->
+
+<main id="main">
+
+    <!--==========================
+      About Us Section
+    ============================-->
+    <section id="about">
+        <div class="container">
+            <div class="row about-container">
+
+                <div class="section-header">
+                    <h3 class="section-title">Nosotros</h3>
+                    <p class="section-description"></p>
+                </div>
+                
+                <div class="row" id="about-wrapper">
+                    <div class="col-lg-6 content2 order-lg-1">
+                        <img src="../../../assets/img/about/nosotros.png" style="width: 60%;" alt="">
+                    </div>
+                    <div class="col-lg-6 content order-lg-1">
+                        
+                        <button type="button" (click)="openPopupNuestra()">
+                            <img src="../../../assets/img/nosotros/nuestramision.png" alt="">
+                        </button>
+
+                        <button type="button" (click)="openPopupQuienes()">
+                            <img src="../../../assets/img/nosotros/quienessomos.png" alt="">
+                        </button>
+
+                        <button type="button" (click)="openPopupValores()">
+                            <img src="../../../assets/img/nosotros/valores.png" alt="">
+                        </button>
+
+                        <button type="button" (click)="openPopupPorque()">
+                            <img src="../../../assets/img/nosotros/porqueelegirnos.png" alt="">
+                        </button>
+
+                        <button type="button" (click)="openPopupGarantia()">
+                            <img src="../../../assets/img/nosotros/garantiadesatisfaccion.png" alt="">
+                        </button>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyleNuestra}">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Nuestra misión</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>En My Love for CBD, nos esforzamos por mejorar la vida diaria de las personas con los productos de CBD más convenientes y 
+                            efectivos de todo el mundo. La relajación y el bienestar son más fáciles!  Ya que, tanto el estrés físico como el mental 
+                            se vuelven manejables.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btnClose" (click)="closePopupNuestra()">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyleQuienes}">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Quienes somos</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Somos una empresa dedicada a la distribución de CBD con fines terapéuticos que brinden bienestar a nuestros clientes con 
+                            la esperanza de mejorar su calidad de vida aliviando malestares como depresión, estrés físico y /o mental, insomnio, 
+                            ansiedad, etc. Nuestra amplia selección de productos de CBD  que además son de acción rápida, es conocido por mejorar el 
+                            bienestar físico y mental de nuestros clientes, ganándonos su confianza y preferencia. My Love for CBD es totalmente 
+                            transparente, compartimos los informes de laboratorio y publicamos blogs educativos en línea.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btnClose" (click)="closePopupQuienes()">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyleValores}">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Valores</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Veracidad, Esperanza, integridad, Responsabilidad.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btnClose" (click)="closePopupValores()">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStylePorque}">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Por qué elegir My Love for CBD</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Proporcionamos una verificación independiente de las buenas prácticas. Nos ocupamos en estudiar y mantener a la vanguardia 
+                            la información que nos permita ir cada vez más lejos en el cuidado de nuestros clientes.
+                            <br>
+                            Envío gratis
+                            <br>
+                            El envío es gratis en todos los pedidos de más de $ 750.00 Realizamos envíos a toda la Republica Mexicana.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btnClose" (click)="closePopupPorque()">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyleGarantia}">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Garantía de satisfacción</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Cada uno de nuestros potentes productos de CBD a la venta incluye una garantía de satisfacción del 100%. Tenemos tanta 
+                           confianza en nuestros productos de CBD que sabemos que quedará completamente satisfecho.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btnClose" (click)="closePopupGarantia()">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <!-- #about -->
+
+
+
+
+
+
+
+
+
+
+</main>
+
+<!--==========================
+    Footer
+  ============================-->
+<footer id="footer">
+    <div class="footer-top">
+        <div class="container">
+
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="copyright">
+            <a href="../../../assets/docs/terminosycondiciones.pdf" target="_blank">Terminos y Condiciones</a> / 
+            <a href="../../../assets/docs/politicadeprivacidad.pdf" target="_blank">Politica de privacidad</a>
+        </div>
+        <div class="copyright">
+            &copy; Copyright 2022, <strong>MY LOVE FOR CBD</strong>.
+        </div>
+    </div>
+</footer>
+<!-- #footer -->
+
+<a href="#" class="calculator" style="display: inline;">
+    <img src="../../../assets/img/calculadoracbd.png" width='60px' alt="Calculadora">
+</a>
+
+<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>

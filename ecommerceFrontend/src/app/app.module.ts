@@ -11,6 +11,9 @@ import { PoliticaComponent } from './components/politica/politica.component';
 import { EnConstruccionComponent } from './components/en-construccion/en-construccion.component';
 import { TiendaComponent } from './components/tienda/tienda.component';
 import { ArticuloComponent } from './components/articulo/articulo.component';
+import { FaqComponent } from './components/faq/faq.component';
+import { BlogComponent } from './components/blog/blog.component';
+import { AboutComponent } from './components/about/about.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,10 @@ import { ArticuloComponent } from './components/articulo/articulo.component';
     PoliticaComponent,
     EnConstruccionComponent,
     TiendaComponent,
-    ArticuloComponent
+    ArticuloComponent,
+    FaqComponent,
+    BlogComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

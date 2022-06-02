@@ -93,6 +93,36 @@ h6 {
 }
 
 
+/* calculator */
+
+.calculator {
+    position: fixed;
+    display: none;
+    color: #fff;
+    padding: 20px 0px 219px 0px;
+    font-size: 16px;
+    border-radius: 2px;
+    right: 15px;
+    bottom: 15px;
+    transition: background 0.5s;
+}
+
+@media (max-width: 768px) {
+    .calculator {
+        bottom: 15px;
+    }
+}
+
+.calculator:focus {
+    color: #fff;
+    outline: none;
+}
+
+.calculator:hover {
+    color: #fff;
+}
+
+
 /*--------------------------------------------------------------
   # Header
   --------------------------------------------------------------*/
@@ -144,7 +174,7 @@ h6 {
 }
 
 #header.header-fixed {
-    background: #A889BF;
+    background: #FFFFFF;
     padding: 0px 0;
     height: 180px;
     transition: all 0.5s;
@@ -553,10 +583,10 @@ h6 {
 /* Nav Meu Styling */
 
 .nav-menu a {
-    padding: 0 8px 10px 8px;
+    padding: 8px 8px 10px 8px;
     text-decoration: none;
     display: inline-block;
-    color: #FFF;
+    color: #606060;
     font-family: "Poppins", sans-serif;
     font-weight: 400;
     font-size: 13px;
@@ -582,7 +612,7 @@ h6 {
 }
 
 .nav-menu>li>a:hover {
-    background-color: #afd6ad;
+    background-color: #A889BF;
     color: white;
     margin-left: 0px;
     text-decoration: none;
@@ -602,7 +632,8 @@ h6 {
 }
 
 .nav-menu ul li {
-    background: #fff;
+    background: #FFF;
+    color: #000;
 }
 
 .nav-menu ul li:first-child {
@@ -663,7 +694,7 @@ h6 {
 }
 
 .nav-menu-top>li>a:hover {
-    background-color: #afd6ad;
+    background-color: #fff;
     color: white;
     margin-left: 0px;
     text-decoration: none;
@@ -711,7 +742,6 @@ h6 {
 .nav-menu-top .icono-top {
     width: 35px;
     height: auto;
-    background-color: #A889BF;
     padding: 3px;
 }
 
@@ -772,7 +802,7 @@ h6 {
 }
 
 #mobile-nav ul li a {
-    color: #fff;
+    color: #000;
     font-size: 16px;
     overflow: hidden;
     padding: 10px 22px 10px 15px;
@@ -784,7 +814,7 @@ h6 {
 }
 
 #mobile-nav ul li a:hover {
-    color: #fff;
+    color: #000;
 }
 
 #mobile-nav ul li li {
@@ -870,9 +900,9 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 #about {
     background: #f7f7f7;
-    padding: 40px 0;
+    padding: 200px 0;
     width: 100%;
-    height: 75vh;
+    height: 100vh;
     background-size: cover;
     position: relative;
 }
@@ -1164,9 +1194,9 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 #tienda {
     background: #fff;
-    padding: 40px 0;
+    padding: 200px 0;
     width: 100%;
-    height: 80vh;
+    height: 120vh;
     background-size: cover;
     position: relative;
 }
@@ -1221,7 +1251,7 @@ body.mobile-nav-active #mobile-nav-toggle {
     position: relative;
     border-radius: 15px;
     height: 100%;
-    width: 120%;
+    width: 135%;
 }
 
 #tienda .tienda-item .details {
@@ -1342,9 +1372,8 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 #faq {
     background: #f7f7f7;
-    padding: 40px 0 60px 0;
+    padding: 200px 0 60px 0;
     width: 100%;
-    height: 100vh;
     background-size: cover;
     position: relative;
 }
@@ -1410,6 +1439,91 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 #faq .description {
+    font-size: 14px;
+    line-height: 24px;
+}
+
+
+/* Blog Section
+  --------------------------------*/
+
+#blog {
+    background: #f7f7f7;
+    padding: 200px 0 60px 0;
+    width: 100%;
+    height: 280vh;
+    background-size: cover;
+    position: relative;
+}
+
+#blog .box {
+    padding: 50px 20px;
+    margin-bottom: 50px;
+    text-align: center;
+    border: 1px solid #e6e6e6;
+    height: 200px;
+    position: relative;
+    background: #fafafa;
+}
+
+#blog .icon {
+    position: absolute;
+    top: -36px;
+    left: calc(50% - 36px);
+    transition: 0.2s;
+    border-radius: 50%;
+    border: 6px solid #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    width: 72px;
+    height: 72px;
+    background: #A889BF;
+}
+
+#blog .icon a {
+    display: inline-block;
+}
+
+#blog .icon i {
+    color: #fff;
+    font-size: 24px;
+}
+
+#blog .box:hover .icon {
+    background: #fff;
+    border: 2px solid #A889BF;
+}
+
+#blog .box:hover .icon i {
+    color: #A889BF;
+}
+
+#blog .box:hover .icon a {
+    color: #A889BF;
+}
+
+#blog .title {
+    font-weight: 700;
+    font-size: 22px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+#blog .subtitle {
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+#blog .title a {
+    color: #111;
+}
+
+#blog .description {
     font-size: 14px;
     line-height: 24px;
 }
@@ -1493,12 +1607,70 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 
+/* Informes Section
+  --------------------------------*/
+
+#informes {
+    background: #fff;
+    padding: 40px 0 40px 0;
+}
+
+#informes .info {
+    color: #333333;
+}
+
+#informes .info i {
+    font-size: 32px;
+    color: #afd6ad;
+    float: left;
+}
+
+#informes .info p {
+    padding: 0 0 10px 50px;
+    margin-bottom: 20px;
+    line-height: 22px;
+    font-size: 14px;
+}
+
+#informes .info .email p {
+    padding-top: 5px;
+}
+
+#informes .form .validation {
+    color: red;
+    display: none;
+    margin: 0 0 20px;
+    font-weight: 400;
+    font-size: 13px;
+}
+
+#informes .form input,
+#informes .form select,
+#informes .form textarea {
+    border-radius: 0;
+    box-shadow: none;
+    font-size: 14px;
+}
+
+#informes .form button[type="submit"] {
+    background: #afd6ad;
+    border: 0;
+    padding: 10px 24px;
+    color: #606060;
+    transition: 0.4s;
+}
+
+#informes .form button[type="submit"]:hover {
+    background: #afd6ad;
+}
+
+
 /* Contact Section
   --------------------------------*/
 
 #contact {
-    background: #fff;
-    padding: 40px 0 40px 0;
+    background: #f7f7f7;
+    padding: 120px 0 40px 0;
 }
 
 #contact #google-map {
@@ -1512,7 +1684,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 #contact .info i {
     font-size: 32px;
-    color: #afd6ad;
+    color: #A889BF;
     float: left;
 }
 
@@ -1532,7 +1704,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 #contact .social-links a {
-    color: #fff;
+    color: #FFF;
     display: inline-block;
     font-size: 18px;
     width: 50px;
@@ -1548,7 +1720,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 #contact .social-links a:hover {
-    color: #e9e9e9;
+    color: #afd6ad;
     -webkit-transform: rotate(360deg);
     -moz-transform: rotate(360deg);
     -o-transform: rotate(360deg);
@@ -1558,22 +1730,22 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 #contact .foot-icon-bg-1 {
     /*background: #8938ae;*/
-    background: #afd6ad;
+    background: #A889BF;
 }
 
 #contact .foot-icon-bg-2 {
     /*background: #3b5999;*/
-    background: #afd6ad;
+    background: #A889BF;
 }
 
 #contact .foot-icon-bg-3 {
     /*background: #1da1f3;*/
-    background: #afd6ad;
+    background: #A889BF;
 }
 
 #contact .foot-icon-bg-4 {
     /*background: #3CC44F;*/
-    background: #afd6ad;
+    background: #A889BF;
 }
 
 #contact .form #sendmessage {
@@ -1621,12 +1793,13 @@ body.mobile-nav-active #mobile-nav-toggle {
     background: #afd6ad;
     border: 0;
     padding: 10px 24px;
-    color: #fff;
+    color: #f7f7f7;
     transition: 0.4s;
 }
 
 #contact .form button[type="submit"]:hover {
-    background: #afd6ad;
+    background: #A889BF;
+    color: #f7f7f7;
 }
 
 
@@ -2308,4 +2481,34 @@ a:focus {
 
 #politica .modal .modal-body img {
     max-width: 100%;
+}
+
+
+details{
+    padding: 5px;
+    margin-bottom:5px;
+    width:100%;
+
+  }
+summary{
+    font-weight: bold;
+    color: #A889BF;
+    font-size: 12px;
+    cursor: pointer;
+  }
+ 
+
+/* Informes Section
+  --------------------------------*/
+
+#informes a {
+    color: #afd6ad;
+}
+
+#informes a:hover,
+a:active,
+a:focus {
+    color: #2dca98;
+    outline: none;
+    text-decoration: none;
 }

@@ -9,6 +9,9 @@ import { PoliticaComponent } from './components/politica/politica.component';
 import { EnConstruccionComponent } from './components/en-construccion/en-construccion.component';
 import { TiendaComponent } from './components/tienda/tienda.component';
 import { ArticuloComponent } from './components/articulo/articulo.component';
+import { FaqComponent } from './components/faq/faq.component';
+import { BlogComponent } from './components/blog/blog.component';
+import { AboutComponent } from './components/about/about.component';
 
 
 const routes: Routes = [
@@ -19,6 +22,9 @@ const routes: Routes = [
   { path: 'enConstruccion', component: EnConstruccionComponent },
   { path: 'tienda/:id', component: TiendaComponent },
   { path: 'articulo/:name', component: ArticuloComponent },
+  { path: 'faq', component: FaqComponent },
+  { path: 'blog', component: BlogComponent },
+  { path: 'about', component: AboutComponent },
   { path: '**', pathMatch: 'full', redirectTo: 'inicio'}
 ];
 
