@@ -12,6 +12,8 @@ import { ArticuloComponent } from './components/articulo/articulo.component';
 import { FaqComponent } from './components/faq/faq.component';
 import { BlogComponent } from './components/blog/blog.component';
 import { AboutComponent } from './components/about/about.component';
+import { Nota1Component } from './components/nota1/nota1.component';
+import { Nota2Component } from './components/nota2/nota2.component';
 
 
 const routes: Routes = [
@@ -25,6 +27,8 @@ const routes: Routes = [
   { path: 'faq', component: FaqComponent },
   { path: 'blog', component: BlogComponent },
   { path: 'about', component: AboutComponent },
+  { path: 'nota1', component: Nota1Component },
+  { path: 'nota2', component: Nota2Component },
   { path: '**', pathMatch: 'full', redirectTo: 'inicio'}
 ];
 
