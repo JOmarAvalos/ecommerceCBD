@@ -1,0 +1,43 @@
+
+MacBook-Pro-de-Daniel:ecommerceFrontend omaravalos$ ssh disofgis@66.29.141.41 -p 21098
+
+Are you sure you want to continue connecting (yes/no)? yes
+
+disofgis@66.29.141.41's password: 7BWZosNJMP5f
+
+[disofgis@premium213 ~]$ psql disofgis_cbd disofgis_omar
+
+Password for user disofgis_omar: omaravalos
+
+disofgis_cbd=> 
+
+
+
+
+
+
+disofgis_cbd=> \l
+
+disofgis_cbd=> \dt desarrollo.*
+
+disofgis_cbd=> select * from cbddesarrollo.cbd_articulos limit 1;
+
+disofgis_cbd=> select inventario_cantidad from cbddesarrollo.cbd_articulos;
+
+
+disofgis_cbd=> Update cbddesarrollo.cbd_articulos 
+				  set inventario_cantidad = 2 ;
+
+disofgis_cbd=> \q
+
+disofgis_cbd=> \dt *.*
+ 
+
+
+SELECT cve_articulo, nombre, id_categoria_articulo, concentracion, presentacion, 
+       sabor, descripcion_corta, precio, inventario_cantidad, ban_activo, imagen_principal 
+  FROM cbddesarrollo.cbd_articulos
+  ORDER BY cve_articulo; 
+
+
+
