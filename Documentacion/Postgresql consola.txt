@@ -41,3 +41,13 @@ SELECT cve_articulo, nombre, id_categoria_articulo, concentracion, presentacion,
 
 
 
+UPDATE cbddesarrollo.cbd_articulos SET imagen_principal = '' WHERE cve_articulo = ;
+ 
+
+
+
+
+
+
+
+
